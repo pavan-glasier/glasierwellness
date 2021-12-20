@@ -58,11 +58,10 @@ get_header();
                     while( have_rows('slides', 'option') ) : the_row();
                         $sub_value = get_sub_field('title', 'option'); ?>
                         <?php 
-                        $slide_background_image = get_sub_field('background_image','option');
-                        $slide_title = get_sub_field('title','option');
-                        $slide_sub_title = get_sub_field('sub_title','option');
-                        $slide_button = get_sub_field('button','option');
-
+                            $slide_background_image = get_sub_field('background_image','option');
+                            $slide_title = get_sub_field('title','option');
+                            $slide_sub_title = get_sub_field('sub_title','option');
+                            $slide_button = get_sub_field('button','option');
                         ?>
                 <div class="slide">
                     <div class="img--holder" data-bg="<?php echo $slide_background_image;?>"></div>

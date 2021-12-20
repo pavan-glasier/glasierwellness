@@ -96,6 +96,24 @@ Glasier Wellness is distributed under the terms of the GNU GPL.
  */
 
 /* Categories 01 to 03 are the basics. */
+
+.header-social [class*='fa-'],
+.header-social [class*='fas-'] {
+    display: block;
+    position: relative;
+    height: 48px;
+    padding: 0 13px;
+    z-index: 1;
+    font-size: 22px;
+    line-height: 48px;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2);
+    transition: all .2s;
+    border-radius: 50%;
+}
+[class^="fa-"],
+[class*="fa-"] {
+    font-family: 'FontAwesome' !important;
+}
 button.sub-menu-toggle {
     display: none;
 }
@@ -120,4 +138,141 @@ button.sub-menu-toggle {
 }
 .page-template-product-search .prd-grid:not(.prd-carousel) .prd {
     width: calc(25% - 30px);
+}
+
+
+
+
+/* FOOTER CSS */
+form.footer-subscribe {
+    position: relative;
+}
+body .footer-subscribe .input-group .form-control {
+    width: 100%;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+}
+
+.footer-subscribe .subscribe_mail {
+    width: 85%;
+}
+.footer-subscribe .submit-btn-span {
+    width: 15%;
+    height: 43px;
+    display: flex;
+    align-items: center;
+}
+.footer-subscribe .submit-btn {
+    width: 43px;
+    height: 43px;
+    margin: 0;
+    padding: 0;
+    line-height: 43px;
+    border: none;
+    text-align: center;
+    outline: none;
+    box-shadow: none;
+}
+.footer-subscribe .wpcf7-spinner {
+    margin: 0;
+    position: absolute;
+    right: -30px;
+}
+.footer-subscribe .wpcf7-not-valid-tip {
+    color: #dc3232;
+    display: block;
+    position: absolute;
+    font-size: 12px;
+    font-weight: 600;
+}
+.footer-subscribe .wpcf7-response-output {
+    font-size: 14px;
+    margin: 0 !important;
+    position: absolute;
+    letter-spacing: 0px;
+    top: 70px;
+    max-width: 300px;
+    border-radius: 10px;
+}
+.wpcf7 form.invalid .wpcf7-response-output{
+    background: #ffb900;
+    color: #fff;
+}
+.wpcf7 form.failed .wpcf7-response-output{
+    background: #dc3232;
+    color: #fff;
+}
+.quick-links {
+    list-style: none;
+    padding-left: 25px;
+}
+.quick-links li a{
+    position: relative;
+    transition: all .3s ease-in-out;
+}
+.quick-links li a:hover {
+    text-decoration: none;
+}
+.quick-links li a:before {
+    content: '\e906';
+    font-family: 'dentco';
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    background: #488dca;
+    color: #fff;
+    text-align: center;
+    position: absolute;
+    margin: 5px 0;
+    border-radius: 100%;
+    transform: translate(-24px, 0px);
+    font-size: 8px;
+    transition: all .3s ease-in-out;
+}
+.quick-links li a:hover::before {
+    transform: translate(-30px, 0px);
+}
+
+form.footer-inquiry {
+    position: relative;
+}
+body .footer-inquiry .input-group {
+    margin-bottom: 10px;
+}
+body .footer-inquiry .input-group .form-control {
+    width: 100%;
+}
+.footer-inquiry .submit-btn {
+    width: 43px;
+    height: 43px;
+    margin: 0;
+    padding: 0;
+    line-height: 43px;
+    border: none;
+    text-align: center;
+    outline: none;
+    box-shadow: none;
+}
+.footer-inquiry .wpcf7-spinner {
+    margin: 0;
+    position: absolute;
+    right: 100px;
+    bottom: 10px;
+}
+.footer-inquiry .wpcf7-not-valid-tip {
+    color: #dc3232;
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    height: 16px;
+    line-height: 22px;
+    margin-left: -40px;
+}
+.footer-inquiry .wpcf7-response-output {
+    font-size: 14px;
+    margin: 5px 0 0 0 !important;
+    position: relative;
+    letter-spacing: 0px;
+    border-radius: 10px;
+    line-height: normal;
 }

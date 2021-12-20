@@ -760,3 +760,119 @@ if( function_exists('acf_add_options_page') ) {
 		'parent_slug'	=> 'sliders-settings',
 	));
 }
+
+
+
+
+
+
+remove_action( 'wpcf7_init', 'wpcf7_add_form_tag_submit' );
+add_action( 'wpcf7_init', 'new_wpcf7_add_shortcode_submit_button',20 );
+
+function new_wpcf7_add_shortcode_submit_button() {
+    wpcf7_add_shortcode( 'submit', 'new_wpcf7_submit_button_shortcode_handler' );
+}
+
+function new_wpcf7_submit_button_shortcode_handler( $tag ) {
+	$tag = new WPCF7_Shortcode( $tag );
+
+    $class = wpcf7_form_controls_class( $tag->type );
+
+    $atts = array();
+
+    $atts['class'] = $tag->get_class_option( $class );
+    $atts['id'] = $tag->get_id_option();
+    $atts['tabindex'] = $tag->get_option( 'tabindex', 'int', true );
+
+    $value = isset( $tag->values[0] ) ? $tag->values[0] : '';
+    if ( empty( $value ) )
+        $value = __( 'Send', 'contact-form-7' );
+
+    $atts['type'] = 'submit';
+    $atts['class'] = 'wpcf7-form-control has-spinner wpcf7-submit submit-btn';
+
+    $atts = wpcf7_format_atts( $atts );
+
+    $html = sprintf( '<button %1$s><span><i class="icon-black-envelope"></i></span></button>', $atts, $value );
+    return $html;
+}
+
+
+
+
+
+
+function noPage_pagination($pages = '', $range = 4)
+{
+	$showitems = ($range * 2)+1;
+	global $paged;
+	if(empty($paged)) $paged = 1;
+	if($pages == '')
+	{
+		global $wp_query;
+		$pages = $wp_query->max_num_pages;
+		if(!$pages)
+		{
+			$pages = 1;
+		}
+	}
+	if(1 != $pages)
+	{
+		echo "<span>Page ".$paged." of ".$pages."</span>";
+	}
+}
+//  Custom post type pagination function 
+	
+function cpt_pagination($pages = '', $range = 4)
+{
+	$showitems = ($range * 2)+1;
+	global $paged;
+	if(empty($paged)) $paged = 1;
+	if($pages == '')
+	{
+		global $wp_query;
+		$pages = $wp_query->max_num_pages;
+		if(!$pages)
+		{
+			$pages = 1;
+		}
+	}
+	if(1 != $pages)
+	{
+		echo "<ul class='mt-5 pagination justify-content-center'> ";
+		if($paged > 2 && $paged > $range+1 && $showitems < $pages) echo "<a href='".get_pagenum_link(1)."'>&laquo; First</a>";
+		if($paged > 1 && $showitems < $pages) echo "<a href='".get_pagenum_link($paged - 1)."'>&lsaquo; Previous</a>";
+		for ($i=1; $i <= $pages; $i++)
+		{
+			if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems ))
+			{
+				echo ($paged == $i)? "<li class=\"page-item active\"><a class='page-link'>".$i."</a></li>":"<li class='page-item'> <a href='".get_pagenum_link($i)."' class=\"page-link\">".$i."</a></li>";
+			}
+		}
+		if ($paged < $pages && $showitems < $pages) echo " <li class='page-item'><a class='page-link' href=\"".get_pagenum_link($paged + 1)."\">i class='flaticon flaticon-back'></i></a></li>";
+		if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) echo " <li class='page-item'><a class='page-link' href='".get_pagenum_link($pages)."'><i class='flaticon flaticon-arrow'></i></a></li>";
+		echo "</ul>\n";
+	}
+}
+
+
+function query_post_type($query) {
+    $post_types = get_post_types();
+
+    if ( is_category() || is_tag()) {
+
+        $post_type = get_query_var('products');
+
+        if ( $post_type ) {
+            $post_type = $post_type;
+        } else {
+            $post_type = $post_types;
+        }
+
+        $query->set('post_type', $post_type);
+
+        return $query;
+    }
+}
+
+add_filter('pre_get_posts', 'query_post_type');

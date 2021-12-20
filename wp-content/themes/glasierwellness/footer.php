@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying the footer
  *
@@ -14,7 +15,8 @@
 ?>
 
 
-	<?php //get_template_part( 'template-parts/footer/footer-widgets' ); ?>
+<?php //get_template_part( 'template-parts/footer/footer-widgets' ); 
+?>
 
 
 <!--footer-->
@@ -24,92 +26,77 @@
 			<div class="col-lg-4 footer-col1 pt-lg-3">
 				<div class="row flex-column flex-md-row flex-lg-column">
 					<div class="col-md col-lg-auto">
-						<?php if ( has_custom_logo() ) : ?>
-						    <?php
-						        $custom_logo_id = get_theme_mod( 'custom_logo' );
-						        $image = wp_get_attachment_image_src( $custom_logo_id , 'full' );
-						    ?>
-						    <div class="footer-logo">
-							<img src="<?php echo esc_url( $image[0] ); ?>" alt="" class="img-fluid">
-						</div>
-						    
+
+						<?php $logo = get_field('logo', 'option'); ?>
+						<?php if ($logo) : ?>
+							<div class="footer-logo">
+								<img src="<?php echo esc_url($logo['url']); ?>" alt="<?php echo $logo['title']; ?>" class="img-fluid">
+							</div>
 						<?php endif; ?>
-						
+
 						<div class="mt-2 mt-lg-0"></div>
-						<div class="footer-social d-none d-md-block d-lg-none">
+						<!-- <div class="footer-social d-none d-md-block d-lg-none">
 							<a href="https://www.facebook.com/" target="blank" class="hovicon"><i class="icon-facebook-logo"></i></a>
 							<a href="https://www.twitter.com/" target="blank" class="hovicon"><i class="icon-twitter-logo"></i></a>
 							<a href="https://plus.google.com/" target="blank" class="hovicon"><i class="icon-google-logo"></i></a>
 							<a href="https://www.instagram.com/" target="blank" class="hovicon"><i class="icon-instagram"></i></a>
-						</div>
+						</div> -->
 					</div>
 					<div class="col-md">
 						<div class="footer-text mt-1 mt-lg-1">
-							<p>To receive email releases, simply provide
-								<br>us with your email below</p>
-							<form action="#" class="footer-subscribe">
+							<?php $short_description = get_field('short_description', 'option'); ?>
+							<p><?php echo $short_description; ?></p>
+
+							<!-- <form action="#" class="footer-subscribe">
 								<div class="input-group">
 									<input name="subscribe_mail" type="text" class="form-control" placeholder="Your Email"/>
 									<span><i class="icon-black-envelope"></i></span>
 								</div>
-							</form>
+							</form> -->
+							<?php $news_letter = get_field('news_letter', 'option'); ?>
+							<?php echo do_shortcode($news_letter); ?>
+
 						</div>
-						<div class="footer-social d-md-none d-lg-block">
+						<!-- <div class="footer-social d-md-none d-lg-block">
 							<a href="https://www.facebook.com/" target="blank" class="hovicon"><i class="icon-facebook-logo"></i></a>
 							<a href="https://www.twitter.com/" target="blank" class="hovicon"><i class="icon-twitter-logo"></i></a>
 							<a href="https://plus.google.com/" target="blank" class="hovicon"><i class="icon-google-logo"></i></a>
 							<a href="https://www.instagram.com/" target="blank" class="hovicon"><i class="icon-instagram"></i></a>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
 			<div class="col-sm-6 col-lg-4">
-				<h3>Blog Posts</h3>
+				<h3>Quick Link</h3>
 				<div class="h-decor"></div>
-				<div class="footer-post d-flex">
-					<div class="footer-post-photo"><img src="images/content/footer-post-author-01.jpg" alt="" class="img-fluid"></div>
-					<div class="footer-post-text">
-						<div class="footer-post-title"><a href="#">The doctor’s guide to healthy break...</a></div>
-						<p>September 26, 2018</p>
-					</div>
-				</div>
-				<div class="footer-post d-flex">
-					<div class="footer-post-photo"><img src="images/content/footer-post-author-03.jpg" alt="" class="img-fluid"></div>
-					<div class="footer-post-text">
-						<div class="footer-post-title"><a href="#">So, how much sex is normal?</a></div>
-						<p>August 22, 2018</p>
-					</div>
-				</div>
-				<div class="footer-post d-flex">
-					<div class="footer-post-photo"><img src="images/content/footer-post-author-02.jpg" alt="" class="img-fluid"></div>
-					<div class="footer-post-text">
-						<div class="footer-post-title"><a href="#">Tooth Fairy Traditions...</a></div>
-						<p>July 25, 2018</p>
-					</div>
-				</div>
+				<?php $quick_links = get_field('quick_links', 'option'); ?>
+				<?php
+				$quick_links_value = $quick_links['value'];
+				$footer = 'footer';
+				wp_nav_menu(
+					array(
+						'theme_location'    => $quick_links_value,
+						'container'         => 'ul',
+						'menu_class'        => 'quick-links',
+					)
+				);
+				?>
 			</div>
 			<div class="col-sm-6 col-lg-4">
 				<h3>Our Contacts</h3>
 				<div class="h-decor"></div>
-				<ul class="icn-list">
-					<li><i class="icon-placeholder2"></i>1560 Holden Street San Diego, CA 92139
-						<br>
-						<a href="#" class="btn btn-xs btn-gradient"><i class="icon-placeholder2"></i><span>Get directions on the map</span><i class="icon-right-arrow"></i></a>
-					</li>
-					<li><i class="icon-telephone"></i><b><span class="phone"><span class="text-nowrap">1-800-267-0000</span>, <span class="text-nowrap">1-800-267-0001</span></span></b>
-						<br>(24/7 General inquiry)
-					</li>
-					<li><i class="icon-black-envelope"></i><a href="mailto:info@dentco.net">info@dentco.net</a></li>
-				</ul>
+				<?php $inquiry_form = get_field('inquiry_form', 'option'); ?>
+				<?php echo do_shortcode($inquiry_form); ?>
 			</div>
 		</div>
 	</div>
 	<div class="footer-bottom">
 		<div class="container">
-			<div class="row text-center text-md-left">
-				<div class="col-sm">Copyright © 2020 <a href="#">Medlab</a><span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
-					<a href="#">Privacy Policy</a></div>
-				<div class="col-sm-auto ml-auto"><span class="d-none d-sm-inline">For emergency cases&nbsp;&nbsp;&nbsp;</span><i class="icon-telephone"></i>&nbsp;&nbsp;<b>1-800-267-0000</b></div>
+			<div class="row text-center">
+				<div class="col-sm">
+					<?php echo get_field('copyright_text', 'option');?>
+				</div>
+				<!-- <div class="col-sm-auto ml-auto"><span class="d-none d-sm-inline">For emergency cases&nbsp;&nbsp;&nbsp;</span><i class="icon-telephone"></i>&nbsp;&nbsp;<b>1-800-267-0000</b></div> -->
 			</div>
 		</div>
 	</div>
@@ -135,22 +122,22 @@
 							<p>Something went wrong, try refreshing and submitting the form again.</p>
 						</div>
 						<div class="input-group">
-								<span>
+							<span>
 								<i class="icon-user"></i>
 							</span>
-							<input type="text" name="name" class="form-control" autocomplete="off" placeholder="Your Name*"/>
+							<input type="text" name="name" class="form-control" autocomplete="off" placeholder="Your Name*" />
 						</div>
 						<div class="input-group">
-								<span>
-									<i class="icon-email2"></i>
-								</span>
-							<input type="text" name="email" class="form-control" autocomplete="off" placeholder="Your Email*"/>
+							<span>
+								<i class="icon-email2"></i>
+							</span>
+							<input type="text" name="email" class="form-control" autocomplete="off" placeholder="Your Email*" />
 						</div>
 						<div class="input-group">
-								<span>
-									<i class="icon-smartphone"></i>
-								</span>
-							<input type="text" name="phone" class="form-control" autocomplete="off" placeholder="Your Phone"/>
+							<span>
+								<i class="icon-smartphone"></i>
+							</span>
+							<input type="text" name="phone" class="form-control" autocomplete="off" placeholder="Your Phone" />
 						</div>
 						<textarea name="message" class="form-control" placeholder="Your comment*"></textarea>
 						<div class="text-right mt-2">
@@ -179,43 +166,43 @@
 							<p>Something went wrong, try refreshing and submitting the form again.</p>
 						</div>
 						<div class="input-group">
-								<span>
+							<span>
 								<i class="icon-user"></i>
 							</span>
-							<input type="text" name="bookingname" class="form-control" autocomplete="off" placeholder="Your Name*"/>
+							<input type="text" name="bookingname" class="form-control" autocomplete="off" placeholder="Your Name*" />
 						</div>
 						<div class="row row-xs-space mt-1">
 							<div class="col-sm-6">
 								<div class="input-group">
-										<span>
-											<i class="icon-email2"></i>
-										</span>
-									<input type="text" name="bookingemail" class="form-control" autocomplete="off" placeholder="Your Email*"/>
+									<span>
+										<i class="icon-email2"></i>
+									</span>
+									<input type="text" name="bookingemail" class="form-control" autocomplete="off" placeholder="Your Email*" />
 								</div>
 							</div>
 							<div class="col-sm-6 mt-1 mt-sm-0">
 								<div class="input-group">
-										<span>
-											<i class="icon-smartphone"></i>
-										</span>
-									<input type="text" name="bookingphone" class="form-control" autocomplete="off" placeholder="Your Phone"/>
+									<span>
+										<i class="icon-smartphone"></i>
+									</span>
+									<input type="text" name="bookingphone" class="form-control" autocomplete="off" placeholder="Your Phone" />
 								</div>
 							</div>
 						</div>
 						<div class="row row-xs-space mt-1">
 							<div class="col-sm-6">
 								<div class="input-group">
-										<span>
-											<i class="icon-birthday"></i>
-										</span>
-									<input type="text" name="bookingage" class="form-control" autocomplete="off" placeholder="Your age"/>
+									<span>
+										<i class="icon-birthday"></i>
+									</span>
+									<input type="text" name="bookingage" class="form-control" autocomplete="off" placeholder="Your age" />
 								</div>
 							</div>
 						</div>
 						<div class="selectWrapper input-group mt-1">
-								<span>
-									<i class="icon-micro"></i>
-								</span>
+							<span>
+								<i class="icon-micro"></i>
+							</span>
 							<select name="bookingservice" class="form-control">
 								<option selected="selected" disabled="disabled">Select Service</option>
 								<option value="Molecular Testing & Oncology">Molecular Testing & Oncology</option>
@@ -227,17 +214,17 @@
 							</select>
 						</div>
 						<div class="input-group flex-nowrap mt-1">
-								<span>
-									<i class="icon-calendar2"></i>
-								</span>
+							<span>
+								<i class="icon-calendar2"></i>
+							</span>
 							<div class="datepicker-wrap">
 								<input name="bookingdate" type="text" class="form-control datetimepicker" placeholder="Date" readonly>
 							</div>
 						</div>
 						<div class="input-group flex-nowrap mt-1">
-								<span>
-									<i class="icon-clock"></i>
-								</span>
+							<span>
+								<i class="icon-clock"></i>
+							</span>
 							<div class="datepicker-wrap">
 								<input name="bookingtime" type="text" class="form-control timepicker" placeholder="Time">
 							</div>
@@ -256,4 +243,5 @@
 <?php wp_footer(); ?>
 
 </body>
+
 </html>

@@ -37,16 +37,20 @@ get_header();
                 
                 <?php get_template_part('products/product-cat-list'); ?>
                 <div class="col-md-8 col-lg-9">
-                    <div class="filters-row align-items-center" style="display: none;">
-                        <div class="filters-row-left">
+                    <div class="filters-row align-items-center" >
+                        <div class="d-flex align-items-center justify-content-between filters-row-left col-md-12 p-0">
                             <?php
+                            $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+                            $products = new WP_Query(array('post_type' => 'products', 'posts_per_page' => 12, 'order' => 'DESC', 'paged' => $paged));
+                            $a = 1;
+                            $b = 1;
                             ?>
-                            <span>Showing 1-9 of 18 results</span>
-
+                            <!-- <span>Showing 1-9 of 18 results</span> -->
+                            <?php noPage_pagination($products->max_num_pages);?>
                             <div class="form-inline">
                                 <div class="select-wrapper">
                                     <select id="select" name="sorting">
-                                        <option value="">Default Sorting</option>
+                                        <option value="">Category</option>
                                         <?php
                                         $args = array('hide_empty=1');
                                         $terms = get_terms('product_category', $args);
@@ -75,34 +79,27 @@ get_header();
                                 </div>
                             </div>
                         </div>
-                        <div class="filters-row-right d-flex align-items-center">
-                            <span>Pages:</span>
-                            <ul class="pagination justify-content-center pl-1">
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            </ul>
-                        </div>
+
                     </div>
 
 
                     <div class="prd-grid">
-                        <?php $products = new WP_Query(array('post_type' => 'products', 'order' => 'DESC'));
-                        $a = 1;
-                        $b = 1;
+                        <?php
+                        // $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+                        // $products = new WP_Query(array('post_type' => 'products', 'posts_per_page' => 3, 'order' => 'DESC', 'paged' => $paged));
+                        // $a = 1;
+                        // $b = 1;
                         while ($products->have_posts()) : $products->the_post(); ?>
                             
                             <?php get_template_part('products/product-list'); ?>
 
-                        <?php endwhile; ?>
+
+                        <?php endwhile; wp_reset_postdata();
+                        ?>
+                        
                     </div>
-                    <div class="clearfix"></div>
-                    <ul class="mt-5 pagination justify-content-center">
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><span class="page-link">...</span></li>
-                        <li class="page-item"><a class="page-link" href="#">15</a></li>
-                    </ul>
+                    <div class="clearfix mb-3"></div>
+                        <?php cpt_pagination($products->max_num_pages); ?>  
                 </div>
             </div>
         </div>
