@@ -13,14 +13,16 @@ get_header();
 
 ?>
 
-<?php //if ($post->post_type=='products'){?>
+<?php if ($post->post_type=='products'){ ?>
 
-	<?php //get_template_part('products/category-page'); ?>
+	<?php get_template_part('products/category-page'); ?>
 
-<?php //}else{?>
+<?php } else if ($post->post_type=='post'){ ?>
+	<?php get_template_part('blogs/category-page'); ?>
+<?php } else {?>
 	
 <?php if ( have_posts() ) : ?>
-
+<!-- hello -->
 <header class="page-header alignwide">
 	<?php the_archive_title( '<h1 class="page-title">', '</h1>' ); ?>
 	<?php if ( $description ) : ?>
@@ -39,7 +41,7 @@ get_header();
 <?php get_template_part( 'template-parts/content/content-none' ); ?>
 <?php endif; ?>
 
-<?php //} ?>
+<?php } ?>
 
 
 

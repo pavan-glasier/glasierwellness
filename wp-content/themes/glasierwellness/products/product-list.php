@@ -5,8 +5,15 @@
     </div>
     <div class="prd-info">
         <h3><a href="<?php the_permalink(); ?>"><?php echo get_the_title(); ?></a></h3>
-        <div class="price">$39.97</div>
-
+        <?php $prices = get_field('prices');
+        if( $prices ): 
+            if(!empty($prices['sell_price'])){ ?>
+                <div class="price"><span> ₹ <?php echo $prices['regular_price'];?> /-</span>  ₹ <?php echo $prices['sell_price'];?> /-</div>
+        <?php } else{ ?>
+            <div class="price">₹ <?php echo $prices['regular_price'];?> /-</div>
+        <?php } ?>
+        
+        <?php endif; ?>
         <a class="btn" href="#" data-toggle="modal" data-target="#product<?php echo $post->ID; ?>"><i class="icon-cart"></i>Get Best Quote<i class="icon-cart"></i></a>
     </div>
 </div>

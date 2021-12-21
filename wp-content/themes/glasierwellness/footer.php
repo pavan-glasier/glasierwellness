@@ -240,6 +240,30 @@
 	</div>
 </div>
 
+
+
+<!-- <script src="<?php //echo get_template_directory_uri();?>/vendor/jquery/jquery-3.2.1.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="<?php echo get_template_directory_uri();?>/vendor/jquery-migrate/jquery-migrate-3.0.1.min.js"></script>
+<script src="<?php echo get_template_directory_uri();?>/vendor/cookie/jquery.cookie.js"></script>
+<script src="<?php echo get_template_directory_uri();?>/vendor/bootstrap-datetimepicker/moment.js"></script>
+<script src="<?php echo get_template_directory_uri();?>/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script src="<?php echo get_template_directory_uri();?>/vendor/popper/popper.min.js"></script>
+<script src="<?php echo get_template_directory_uri();?>/vendor/bootstrap/bootstrap.min.js"></script>
+<script src="<?php echo get_template_directory_uri();?>/vendor/waypoints/jquery.waypoints.min.js"></script>
+<script src="<?php echo get_template_directory_uri();?>/vendor/waypoints/sticky.min.js"></script>
+<script src="<?php echo get_template_directory_uri();?>/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="<?php echo get_template_directory_uri();?>/vendor/slick/slick.min.js"></script>
+<script src="<?php echo get_template_directory_uri();?>/vendor/scroll-with-ease/jquery.scroll-with-ease.min.js"></script>
+<script src="<?php echo get_template_directory_uri();?>/vendor/countTo/jquery.countTo.js"></script>
+<script src="<?php echo get_template_directory_uri();?>/vendor/jquery.elevateZoom/jquery.elevateZoom-3.0.8.min.js"></script>
+<script src="<?php echo get_template_directory_uri();?>/vendor/form-validation/jquery.form.js"></script>
+<script src="<?php echo get_template_directory_uri();?>/vendor/form-validation/jquery.validate.min.js"></script>
+<!-- Custom Scripts -->
+<script src="<?php echo get_template_directory_uri();?>/js/app.js"></script>
+<script src="<?php echo get_template_directory_uri();?>/color/color.js"></script>
+<script src="<?php echo get_template_directory_uri();?>/js/app-shop.js"></script>
+<script src="<?php echo get_template_directory_uri();?>/form/forms.js"></script>
 <?php wp_footer(); ?>
 
 </body>
