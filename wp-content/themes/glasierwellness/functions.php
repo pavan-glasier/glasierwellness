@@ -772,6 +772,8 @@ if( function_exists('acf_add_options_page') ) {
 		'menu_title'	=> 'Slider',
 		'parent_slug'	=> 'sliders-settings',
 	));
+
+	
 }
 
 
@@ -892,3 +894,28 @@ add_filter('pre_get_posts', 'query_post_type');
 
 
 
+
+
+
+
+function glasierwellness_pagination(){
+
+	$allowed_tags = [
+
+		'span' => [
+			'class' => []
+		],
+		'a' => [
+			'class' => [],
+			'href' => [],
+		]
+		
+	];
+
+	$args = [
+		'before_page_number' => '<span class="paginate-btn">',
+		'after_page_number' => '</span>',
+
+	];
+	printf('<div class="pagination justify-content-center align-items-center m-3">%s</div>', wp_kses( paginate_links($args), $allowed_tags ) );
+}

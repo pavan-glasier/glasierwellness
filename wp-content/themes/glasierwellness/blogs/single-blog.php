@@ -34,12 +34,11 @@ $wplogoutImage = urlencode(get_the_post_thumbnail_url(get_the_ID(), 'full'));
                                 </h2>
                                 <div class="post-meta">
                                     <div class="post-meta-author">by
+                                    <?php $author_id=$post->post_author; ?>
                                         <?php
-                                        $get_author_id = get_the_author_meta('ID');
-                                        $get_author_gravatar = get_avatar_url($get_author_id, array('size' => 450));
                                         ?>
-                                        <a href="<?php echo esc_url(get_author_posts_url(get_the_author_meta('ID'))); ?>">
-                                            <i><?php the_author(); ?></i>
+                                        <a href="<?php echo esc_url(get_author_posts_url($author_id)); ?>">
+                                            <i><?php the_author_meta( 'display_name', $author_id ); ?></i>
                                         </a>
                                     </div>
 

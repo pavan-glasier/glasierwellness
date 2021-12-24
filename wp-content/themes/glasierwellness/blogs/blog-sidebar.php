@@ -38,11 +38,19 @@
             'numberposts' => 4,
             'post_status' => 'publish'
         ));
-        foreach ($recent_posts as $post_item) : ?>
+        foreach ($recent_posts as $post_item) :
+        ?>
+        
             <div class="blog-post post-preview">
                 <div class="post-image">
                     <a href="<?php echo get_permalink($post_item['ID']) ?>">
-                        <?php echo get_the_post_thumbnail($post_item['ID'], 'full'); ?>
+                    <?php 
+                    if ( has_post_thumbnail($post_item["ID"])) { ?>
+                        <img src="<?php echo wp_get_attachment_url( get_post_thumbnail_id($post_item['ID']), 'full' ); ?>" />
+                    <?php }else{ ?>
+                        <img src="<?=site_url();?>/wp-content/uploads/2021/12/no-preview.png" alt="noprivew" >
+                    <?php }
+                    ?>
                     </a>
                 </div>
                 <div>
@@ -50,8 +58,18 @@
                         <a href="<?php echo get_permalink($post_item['ID']) ?>"><?php echo $post_item['post_title'] ?></a>
                     </h4>
                     <div class="post-meta">
-                        <div class="post-meta-author text-nowrap">by <a href="#"><i>admin</i></a></div>
-                        <div class="post-meta-date text-nowrap"><i class="icon icon-clock3"></i>17 Jan, 2018</div>
+                        <div class="post-meta-author text-nowrap">by 
+                            <?php
+                            ?>
+                        
+                            <a href="<?php echo esc_url( get_author_posts_url( $post_item['post_author'] ) ); ?>">
+                                <i><?php the_author_meta( 'display_name', $post_item['post_author'] ); ?></i>
+                            </a>
+                        </div>
+                        <div class="post-meta-date text-nowrap">
+                            <i class="icon icon-clock3"></i>
+                            <?php echo get_the_date( 'd M, Y ', $post_item['ID'] ); ?>
+                        </div>
                     </div>
                 </div>
             </div>
