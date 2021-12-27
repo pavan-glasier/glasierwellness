@@ -10,6 +10,7 @@
                     <?php
                     $category = get_queried_object();
                    $cat_ID = $category->term_id;
+                   $cat_name = $category->name;
                     ?>
                 </div>
             </div>
@@ -29,7 +30,7 @@
                 
                 <?php get_template_part('products/product-cat-list'); ?>
                 <div class="col-md-8 col-lg-9">
-                    <div class="filters-row align-items-center" >
+                    <div class="filters-row align-items-center d-md-none d-flex" >
                         <div class="d-flex align-items-center justify-content-between filters-row-left col-md-12 p-0">
                             <?php
                             $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
@@ -51,10 +52,10 @@
                             ?>
                             <!-- <span>Showing 1-9 of 18 results</span> -->
                             <?php noPage_pagination($products->max_num_pages);?>
-                            <div class="form-inline">
+                            <div class="form-inline w-100">
                                 <div class="select-wrapper">
                                     <select id="select" name="sorting">
-                                        <option value="">Category</option>
+                                        <option value="<?php echo site_url();?>/product-page/">Category</option>
                                         <?php
                                         $args = array('hide_empty=1');
                                         $terms = get_terms('product_category', $args);
@@ -64,7 +65,13 @@
                                             // $term_list = '<p class="my_term-archive"></p>';
                                             foreach ($terms as $term) {
                                                 $i++;
-                                                $term_list .= '<option value="' . esc_url(get_term_link($term)) . '" >' . $term->name . '</option>';
+                                                if($cat_name == $term->name){
+                                                    $term_list .= '<option value="' . esc_url(get_term_link($term)) . '" selected >' . $term->name . '</option>';
+                                                }else{
+                                                    $term_list .= '<option value="' . esc_url(get_term_link($term)) . '">' . $term->name . '</option>';
+                                                }
+
+                                                
                                             }
                                             echo $term_list;
                                         }

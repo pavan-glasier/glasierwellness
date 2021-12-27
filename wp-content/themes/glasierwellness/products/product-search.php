@@ -61,13 +61,6 @@ $search = $_GET['search'];
                         ?>
                     </div>
                     <div class="clearfix"></div>
-                    <!-- <ul class="mt-5 pagination justify-content-center">
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><span class="page-link">...</span></li>
-                        <li class="page-item"><a class="page-link" href="#">15</a></li>
-                    </ul> -->
                 </div>
             </div>
         </div>

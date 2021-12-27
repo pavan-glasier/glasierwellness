@@ -27,7 +27,7 @@ get_header();
     <!--section-->
     <div class="section page-content-first">
         <div class="container">
-            <div class="text-center mb-2  mb-md-3 mb-lg-4">
+            <div class="text-center mb-2 mb-md-3 mb-lg-4">
                 <h1>All Products</h1>
                 <div class="h-decor"></div>
             </div>
@@ -36,8 +36,10 @@ get_header();
             <div class="row">
                 
                 <?php get_template_part('products/product-cat-list'); ?>
+                
                 <div class="col-md-8 col-lg-9">
-                    <div class="filters-row align-items-center" >
+                    
+                    <div class="filters-row align-items-center d-md-none d-flex" >
                         <div class="d-flex align-items-center justify-content-between filters-row-left col-md-12 p-0">
                             <?php
                             $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
@@ -47,7 +49,7 @@ get_header();
                             ?>
                             <!-- <span>Showing 1-9 of 18 results</span> -->
                             <?php noPage_pagination($products->max_num_pages);?>
-                            <div class="form-inline">
+                            <div class="form-inline w-100">
                                 <div class="select-wrapper">
                                     <select id="select" name="sorting">
                                         <option value="">Category</option>
@@ -106,4 +108,36 @@ get_header();
     </div>
 </div>
 
+<script></script>
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
+    
 <?php get_footer(); ?>

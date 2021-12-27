@@ -90,9 +90,9 @@ $wrapper_classes .= has_nav_menu('primary') ? ' has-menu' : '';
 
                     </div>
                     <div class="header-search">
-                        <form method="get" class="form-inline" action="<?php echo site_url(); ?>/product-search/">
+                        <form role="search" method="get" class="form-inline" action="<?php echo esc_url( home_url( '/' ) ); ?>">
                             <i class="icon-search"></i>
-                            <input type="text" placeholder="Search.." value="" name="search">
+                            <input type="text" placeholder="Search.." value="" name="s">
                             <button type="submit" value="submit"><i class="icon-search"></i></button>
                         </form>
                     </div>

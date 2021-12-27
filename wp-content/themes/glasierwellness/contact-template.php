@@ -10,7 +10,7 @@ get_header();
 
 
 
-<div class="page-content"  >
+<div class="page-content">
 		<!--section-->
         <div class="section mt-0" >
         <?php
@@ -26,32 +26,84 @@ get_header();
                     <?php 
                         $contact_details = get_field('contact_details');
                         // print_r($contact_details);
+						$locations = $contact_details['locations'];
+						$contact_info = $contact_details['contact_info'];
+						$social_media = $contact_details['social_media'];
+						
                     ?>
-					<div class="col-md"  >
+					<div class="col-md">
 						<div class="title-wrap">
-							<h5  >Clinic Location</h5>
-							<div class="h-decor"></div>
+						<?php 
+							if(!empty($locations['heading'])){ ?>
+								<h5><?php echo $locations['heading'];?></h5>
+								<div class="h-decor"></div>
+							<?php }
+							?>
 						</div>
 						<ul class="icn-list-lg">
-							<li><i class="icon-placeholder2"  ></i> DentCo Dental Clinic
-								<br>1560 Holden Street San Diego,
-								<br>CA 92139
+							<li><i class="icon-placeholder2"></i> 
+							<?php echo $locations['address'];?>
 							</li>
 						</ul>
 					</div>
-					<div class="col-md mt-3 mt-md-0"  >
-						<div class="title-wrap"  >
-							<h5  >Contact Info</h5>
-							<div class="h-decor"  ></div>
+					<div class="col-md mt-3 mt-md-0">
+						<div class="title-wrap">
+						<?php 
+							if(!empty($contact_info['heading'])){ ?>
+								<h5><?php echo $contact_info['heading'];?></h5>
+								<div class="h-decor"></div>
+							<?php }
+							?>
 						</div>
-						<ul class="icn-list-lg"  >
-							<li  ><i class="icon-telephone"  ></i>Phone: <span class="theme-color"  ><span class="text-nowrap"  >1-800-267-0000,</span> <span class="text-nowrap"  >1-800-267-0001</span>
-								</span>
-								<br  > Fax: <span class="theme-color"  ><span class="text-nowrap"  >(957) 267-0020</span>
-								</span>
+						<ul class="icn-list-lg">
+							<li><i class="icon-telephone"></i>Phone: 
+							<span class="theme-color">
+								<span class="text-nowrap"><?php echo $contact_info['phone'];?></span>
+							</span>
 							</li>
-							<li  ><i class="icon-black-envelope"  ></i><a href="mailto:info@dentco.net"  >info@dentco.net</a></li>
+							<li><i class="icon-black-envelope"></i><a href="mailto:<?php echo $contact_info['email'];?>"><?php echo $contact_info['email'];?></a></li>
 						</ul>
+					</div>
+
+					<div class="col-md mt-3 mt-md-0">
+						<div class="title-wrap">
+							<?php 
+							if(!empty($social_media['heading'])){ ?>
+								<h5><?php echo $social_media['heading'];?></h5>
+								<div class="h-decor"></div>
+							<?php }
+							?>
+						</div>
+						<?php 
+							if($social_media) :
+						?>
+						<div class="content-social mt-15">
+							<?php 
+							if(!empty($social_media['facebook'])):
+							?>
+							<a href="<?php echo $social_media['facebook'];?>" target="blank" class="hovicon bg-white"><i class="icon-facebook-logo"></i></a>
+							<?php endif;?>
+
+							<?php 
+							if(!empty($social_media['twitter'])):
+							?>
+							<a href="<?php echo $social_media['twitter'];?>" target="blank" class="hovicon bg-white"><i class="icon-twitter-logo"></i></a>
+							<?php endif;?>
+
+							<?php 
+							if(!empty($social_media['instagram'])):
+							?>
+							<a href="<?php echo $social_media['instagram'];?>" target="blank" class="hovicon bg-white"><i class="icon-instagram"></i></a>
+							<?php endif;?>
+
+							<?php 
+							if(!empty($social_media['linkedin'])):
+							?>
+							<a href="<?php echo $social_media['linkedin'];?>" target="blank" class="hovicon bg-white"><i class="icon-l fa fa-linkedin"></i></a>
+							<?php endif;?>
+							
+						</div>
+						<?php endif;?>
 					</div>
 					<!--  -->
 				</div>
@@ -59,53 +111,26 @@ get_header();
 		</div>
 		<!--//section-->
 		<!--section-->
-		<div class="section pb-5"  >
-			<div class="container"  >
-				<div class="row"  >
-					<div class="col-md col-lg-5"  >
-						<div class="pr-0 pr-lg-8"  >
-							<div class="title-wrap"  >
-								<h2  >Get In Touch With Us</h2>
-								<div class="h-decor"  ></div>
-							</div>
-							<div class="mt-2 mt-lg-4"  >
-								<p  >For general questions, please send us a message and we’ll get right back to you. You can also call us directly to speak with a member of our service team or insurance expert.</p>
-								<p class="p-sm"  >Fields marked with a * are required.</p>
-							</div>
-							<div class="mt-2 mt-md-5"  ></div>
-							<h5  >Stay Connected</h5>
-							<div class="content-social mt-15"  >
-								<a href="https://www.facebook.com/" target="blank" class="hovicon"  ><i class="icon-facebook-logo"  ></i></a>
-								<a href="https://www.twitter.com/" target="blank" class="hovicon"  ><i class="icon-twitter-logo"  ></i></a>
-								<a href="https://plus.google.com/" target="blank" class="hovicon"  ><i class="icon-google-logo"  ></i></a>
-								<a href="https://www.instagram.com/" target="blank" class="hovicon"  ><i class="icon-instagram"  ></i></a>
+		<div class="section pb-5">
+			<div class="container">
+				<div class="row">
+					<div class="col-md col-lg-12">
+						<div class="pr-0 pr-lg-8">
+						<?php 
+							$contact_form = get_field('contact_form');
+						?>
+							<div class="title-wrap">
+								<?php 
+								if(!empty($contact_form['heading'])): ?>
+								<h2><?php echo $contact_form['heading'];?></h2>
+								<div class="h-decor"></div>
+								<?php endif;?>
+								
 							</div>
 						</div>
 					</div>
-					<div class="col-md col-lg-6 mt-4 mt-md-0"  >
-						<form class="contact-form" id="contactForm" method="post" novalidate="novalidate"  >
-							<div class="successform"  >
-								<p  >Your message was sent successfully!</p>
-							</div>
-							<div class="errorform"  >
-								<p  >Something went wrong, try refreshing and submitting the form again.</p>
-							</div>
-							<div  >
-								<input type="text" class="form-control" name="name" placeholder="Your name*"  >
-							</div>
-							<div class="mt-15"  >
-								<input type="text" class="form-control" name="email" placeholder="Email*"  >
-							</div>
-							<div class="mt-15"  >
-								<input type="text" class="form-control" name="phone" placeholder="Your Phone"  >
-							</div>
-							<div class="mt-15"  >
-								<textarea class="form-control" name="message" placeholder="Message"  ></textarea>
-							</div>
-							<div class="mt-3"  >
-								<button type="submit" class="btn btn-hover-fill"  ><i class="icon-right-arrow"  ></i><span  >Send message</span><i class="icon-right-arrow"  ></i></button>
-							</div>
-						</form>
+					<div class="col-md col-lg-12 mt-4">
+						<?php echo do_shortcode('[contact-form-7 id="'.$contact_form['form'].'" html_class="contact-form"]'); ?>
 					</div>
 				</div>
 			</div>

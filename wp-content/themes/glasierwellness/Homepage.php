@@ -245,7 +245,7 @@ get_header();
 
 
     <!--section services -->
-    <div class="section bg-norepeat bg-md-none section-top-padding" style="background-image: url(images/bg-top-left.png)">
+    <div class="section bg-norepeat bg-md-none section-top-padding" style="background-image: url(wp-content/themes/glasierwellness/images/bg-top-left.png)">
         <div class="container-fluid px-0 over-visible">
             <div class="row">
                 <div class="col-lg-6">
@@ -290,7 +290,11 @@ get_header();
                         <div class="over-image-card-text">
                             <h4>Download Forms</h4>
                             <p>We have request forms available for diagnostics that list the test panels and individual markers currently available.</p>
-                            <a href="form-download.html" class="btn btn-white btn-white--all"><i class="icon-right-arrow"></i><span>download forms</span><i class="icon-right-arrow"></i></a>
+                            <a href="#" class="btn btn-white btn-white--all" data-toggle="modal" data-target="#modalQuestionForm">
+                                <i class="icon-right-arrow"></i>
+                                <span>download forms</span>
+                                <i class="icon-right-arrow"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -299,7 +303,7 @@ get_header();
     </div>
     <!--//section services -->
     <!--section faq-->
-    <div class="section mt-lg-large">
+    <div class="section mt-lg-large" style="display: none;">
         <div class="row">
             <div class="col-lg-6">
                 <div class="container-shift-left mb-3 mb-md-4">
@@ -422,224 +426,7 @@ get_header();
         </div>
     </div>
     <!--//section faq-->
-    <!--section specialists-->
-    <div class="section bg-norepeat bg-right bg-md-none section-top-padding" style="background-image: url(<?php echo get_template_directory_uri();?>/images/bg-top-right.png)">
-        <div class="container">
-            <div class="title-wrap text-center">
-                <div class="h-sub theme-color">Perfect Team</div>
-                <h1 class="double-title double-title--center double-title--vcenter" data-title="Perfect Team"><span>A Professional & Care Provider</span></h1>
-                <div class="h-decor"></div>
-            </div>
-            <form action="#" class="content-search content-search--style2 d-flex mb-3">
-                <div class="input-wrap">
-                    <input type="text" class="form-control" placeholder="Search for specialist" list="doctorPosition">
-                    <datalist id="doctorPosition">
-                        <option value="Medical Director">
-                        <option value="Tissue Bank Director">
-                        <option value="Embryologist">
-                    </datalist>
-                </div>
-                <button type="submit"><i class="icon-search"></i></button>
-            </form>
-            <div class="row specialist-carousel js-specialist-carousel">
-                <div class="col-sm-6 col-md-4 category1">
-                    <div class="doctor-box doctor-box-style3 text-center">
-                        <div class="doctor-box-photo">
-                            <a href="doctor-page.html"><img src="<?php echo get_template_directory_uri();?>/images/content/doctor-01.jpg" class="img-fluid" alt=""></a>
-                            <div class="doctor-box-links">
-                                <a href="#"><i class="icon-facebook-logo"></i></a>
-                                <a href="#"><i class="icon-google-logo"></i></a>
-                                <a href="#"><i class="icon-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="doctor-box-top">
-                            <h5 class="doctor-box-name"><a href="doctor-page.html">Dr. Frank Bigham</a></h5>
-                            <div class="doctor-box-position">Medical Director</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 category2">
-                    <div class="doctor-box doctor-box-style3 text-center">
-                        <div class="doctor-box-photo">
-                            <a href="doctor-page.html"><img src="<?php echo get_template_directory_uri();?>/images/content/doctor-02.jpg" class="img-fluid" alt=""></a>
-                            <div class="doctor-box-links">
-                                <a href="#"><i class="icon-facebook-logo"></i></a>
-                                <a href="#"><i class="icon-google-logo"></i></a>
-                                <a href="#"><i class="icon-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="doctor-box-top">
-                            <h5 class="doctor-box-name"><a href="doctor-page.html">Dr. Stuart Orozco</a></h5>
-                            <div class="doctor-box-position">Tissue Bank Director</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 category2">
-                    <div class="doctor-box doctor-box-style3 text-center">
-                        <div class="doctor-box-photo">
-                            <a href="doctor-page.html"><img src="<?php echo get_template_directory_uri();?>/images/content/doctor-03.jpg" class="img-fluid" alt=""></a>
-                            <div class="doctor-box-links">
-                                <a href="#"><i class="icon-facebook-logo"></i></a>
-                                <a href="#"><i class="icon-google-logo"></i></a>
-                                <a href="#"><i class="icon-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="doctor-box-top">
-                            <h5 class="doctor-box-name"><a href="doctor-page.html">Dr. Betty Bone</a></h5>
-                            <div class="doctor-box-position">Embryologist</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 category1">
-                    <div class="doctor-box doctor-box-style3 text-center">
-                        <div class="doctor-box-photo">
-                            <a href="doctor-page.html"><img src="<?php echo get_template_directory_uri();?>/images/content/doctor-04.jpg" class="img-fluid" alt=""></a>
-                            <div class="doctor-box-links">
-                                <a href="#"><i class="icon-facebook-logo"></i></a>
-                                <a href="#"><i class="icon-google-logo"></i></a>
-                                <a href="#"><i class="icon-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="doctor-box-top">
-                            <h5 class="doctor-box-name"><a href="doctor-page.html">Dr. Robert Rush</a></h5>
-                            <div class="doctor-box-position">Psychiatrist</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 category1">
-                    <div class="doctor-box doctor-box-style3 text-center">
-                        <div class="doctor-box-photo">
-                            <a href="doctor-page.html"><img src="<?php echo get_template_directory_uri();?>/images/content/doctor-05.jpg" class="img-fluid" alt=""></a>
-                            <div class="doctor-box-links">
-                                <a href="#"><i class="icon-facebook-logo"></i></a>
-                                <a href="#"><i class="icon-google-logo"></i></a>
-                                <a href="#"><i class="icon-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="doctor-box-top">
-                            <h5 class="doctor-box-name"><a href="doctor-page.html">Dr. Terri Williams</a></h5>
-                            <div class="doctor-box-position">Psychiatrist</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 category2">
-                    <div class="doctor-box doctor-box-style3 text-center">
-                        <div class="doctor-box-photo">
-                            <a href="doctor-page.html"><img src="<?php echo get_template_directory_uri();?>/images/content/doctor-06.jpg" class="img-fluid" alt=""></a>
-                            <div class="doctor-box-links">
-                                <a href="#"><i class="icon-facebook-logo"></i></a>
-                                <a href="#"><i class="icon-google-logo"></i></a>
-                                <a href="#"><i class="icon-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="doctor-box-top">
-                            <h5 class="doctor-box-name"><a href="doctor-page.html">Dr. Berry Gardner</a></a></h5>
-                            <div class="doctor-box-position">Cardiolog</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--//section specialists-->
-    <!--section testimonials-->
-    <div class="section bg-grey p-0">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="reviews-style4-wrap">
-                        <div class="reviews-style4">
-                            <div class="title-wrap">
-                                <div class="h-sub theme-color">Testimonials</div>
-                                <h2 class="h1 double-title double-title--white double-title--right" data-title="Testimonials"><span>What Our<br class="d-sm-none">Customers Say</span></h2>
-                            </div>
-                            <div class="js-reviews-carousel2 reviews-carousel">
-                                <div class="review">
-                                    <p class="review-text">“I have used Your services to have my PSA tests done. I have found them to be helpful and professional in performing the lab tests. They also have been prompt in reporting the results back to me. It is nice to be able to get the tests done without having to see a doctor “for permission!” I recommend this service for those who want to watch their own health as much as possible.”</p>
-                                    <p><span class="review-author">- Joseph Dunbar,</span> <span class="review-author-position">Carpenter</span>
-                                    </p>
-                                </div>
-                                <div class="review">
-                                    <p class="review-text">“I have used Your services to have my PSA tests done. I have found them to be helpful and professional in performing the lab tests. They also have been prompt in reporting the results back to me. It is nice to be able to get the tests done without having to see a doctor “for permission!” I recommend this service for those who want to watch their own health as much as possible.”</p>
-                                    <p><span class="review-author">- Steven Roa,</span> <span class="review-author-position">Businesswoman</span>
-                                    </p>
-                                </div>
-                                <div class="review">
-                                    <p class="review-text">“I have used Your services to have my PSA tests done. I have found them to be helpful and professional in performing the lab tests. They also have been prompt in reporting the results back to me. It is nice to be able to get the tests done without having to see a doctor “for permission!” I recommend this service for those who want to watch their own health as much as possible.”</p>
-                                    <p><span class="review-author">- Wilmer Stevenson,</span> <span class="review-author-position">Creative manager</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 py-sm-3 px-md-4 px-xl-8">
-                    <div class="testimonials-bg-wrap">
-                        <img src="<?php echo get_template_directory_uri();?>/images/content/tesimonials-bg.png" alt="" class="reviews-style4-image-right">
-                        <div class="testimonials-icon"><span><span>“</span></span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--//section testimonials-->
-    <!--section prices-->
-    <div class="section bg-norepeat bg-md-none section-top-padding" style="background-image: url(<?php echo get_template_directory_uri();?>/images/bg-top-left2.png)">
-        <div class="container">
-            <div class="title-wrap text-center">
-                <h2 class="h1 double-title double-title--center double-title--vcenter" data-title="Price Packages"><span>Price Packages</span></h2>
-                <div class="h-decor"></div>
-            </div>
-            <div class="row justify-content-center prices-carousel js-prices-carousel mt-2">
-                <div class="col-sm-6 col-md-4">
-                    <div class="prices-box prices-box--style2">
-                        <h4 class="prices-box-title">Healthy Days Special</h4>
-                        <div class="prices-box-text">Includes: 76 Parametersl</div>
-                        <div class="prices-box-price">
-                            <sub>$</sub>24<sub>.99</sub>
-                        </div>
-                        <div class="prices-box-row">Blood Glucose Fasting</div>
-                        <div class="prices-box-row">Complete Hemogram</div>
-                        <div class="prices-box-row">Kidney Function Test</div>
-                        <div class="prices-box-link">
-                            <a href="form-payonline.html" class="btn"><i class="icon-right-arrow"></i><span>booking now</span><i class="icon-right-arrow"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="prices-box prices-box--style2 prices-box--special">
-                        <h4 class="prices-box-title">OnePlusOne Extended</h4>
-                        <div class="prices-box-text">Includes: 74 Parametersl</div>
-                        <div class="prices-box-price">
-                            <sub>$</sub>89<sub>.99</sub>
-                        </div>
-                        <div class="prices-box-row">Blood Glucose Fasting</div>
-                        <div class="prices-box-row">Complete Hemogram</div>
-                        <div class="prices-box-row">Kidney Function Test</div>
-                        <div class="prices-box-link">
-                            <a href="form-payonline.html" class="btn btn-white btn-white--all"><i class="icon-right-arrow"></i><span>booking now</span><i class="icon-right-arrow"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="prices-box prices-box--style2">
-                        <h4 class="prices-box-title">Basic Screening</h4>
-                        <div class="prices-box-text">Includes: 60 Parametersl</div>
-                        <div class="prices-box-price">
-                            <sub>$</sub>49<sub>.99</sub>
-                        </div>
-                        <div class="prices-box-row">Blood Glucose Fasting</div>
-                        <div class="prices-box-row">Complete Hemogram</div>
-                        <div class="prices-box-row">Kidney Function Test</div>
-                        <div class="prices-box-link">
-                            <a href="form-payonline.html" class="btn"><i class="icon-right-arrow"></i><span>booking now</span><i class="icon-right-arrow"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--//section prices-->
+
     <!--section news & achieved-->
     <div class="section">
         <div class="row no-gutters row-shift">
@@ -746,14 +533,9 @@ get_header();
                             </div>
                             <p>We believe in providing the best possible care to all our existing patients and welcome
                                 new patients to sample.</p>
-                            <form class="contact-form" id="contactForm" method="post" novalidate="novalidate">
-                                <div class="successform">
-                                    <p>Your message was sent successfully!</p>
-                                </div>
-                                <div class="errorform">
-                                    <p>Something went wrong, try refreshing and submitting the form again.</p>
-                                </div>
-                                <div>
+                            <!-- <form class="contact-form" id="contactForm" method="post" novalidate="novalidate"> -->
+                                
+                                <!-- <div>
                                     <input type="text" class="form-control" name="name" placeholder="Your name*">
                                 </div>
                                 <div class="row row-sm-space mt-15">
@@ -762,11 +544,13 @@ get_header();
                                 </div>
                                 <div class="mt-15">
                                     <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                                </div>
+                                </div> 
                                 <div class="mt-2 mt-lg-4">
                                     <button type="submit" class="btn"><i class="icon-right-arrow"></i><span>Send request</span><i class="icon-right-arrow"></i></button>
-                                </div>
-                            </form>
+                                </div>-->
+                                <?php echo do_shortcode('[contact-form-7 id="200" title="Inquiry Form" html_class="contact-form"]');?>
+                                
+                            <!-- </form> -->
                         </div>
                     </div>
                 </div>

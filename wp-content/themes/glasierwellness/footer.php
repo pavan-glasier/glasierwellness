@@ -82,11 +82,22 @@
 				);
 				?>
 			</div>
+			<!-- <div class="col-sm-6 col-lg-4">
+				<h3>Our Contacts</h3>
+				<div class="h-decor"></div>
+				<?php //$inquiry_form = get_field('inquiry_form', 'option'); ?>
+				<?php //echo do_shortcode($inquiry_form); ?>
+			</div> -->
 			<div class="col-sm-6 col-lg-4">
 				<h3>Our Contacts</h3>
 				<div class="h-decor"></div>
-				<?php $inquiry_form = get_field('inquiry_form', 'option'); ?>
-				<?php echo do_shortcode($inquiry_form); ?>
+				<ul class="icn-list">
+				<?php $contact_info = get_field('contact_info', 'option'); ?>
+					<li><i class="icon-placeholder2"></i><?php echo $contact_info['address'];?></li>
+					<li><i class="icon-telephone"></i><b><span class="phone"><span class="text-nowrap"><?php echo $contact_info['phone'];?></span></span></b>
+					</li>
+					<li><i class="icon-black-envelope"></i><a href="mailto:<?php echo $contact_info['email'];?>"><?php echo $contact_info['email'];?></a></li>
+				</ul>
 			</div>
 		</div>
 	</div>

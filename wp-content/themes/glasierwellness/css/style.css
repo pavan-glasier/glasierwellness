@@ -18812,7 +18812,7 @@ ul.category-list {
     margin-right: 0; }
 
   .prd-grid:not(.prd-carousel) .prd:nth-child(2n+1) {
-    clear: left; } }
+    clear: unset; } }
 @media (max-width: 767px) {
   .prd-grid:not(.prd-carousel) .prd {
     width: calc(50% - 30px); }
@@ -18821,7 +18821,7 @@ ul.category-list {
     margin-right: 0; }
 
   .prd-grid:not(.prd-carousel) .prd:nth-child(2n+1) {
-    clear: left; } }
+    clear: unset; } }
 @media (max-width: 374px) {
   .prd-grid {
     margin-right: 0;
