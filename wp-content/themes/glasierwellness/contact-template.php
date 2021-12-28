@@ -121,7 +121,7 @@ get_header();
 						?>
 							<div class="title-wrap">
 								<?php 
-								if(!empty($contact_form['heading'])): ?>
+								if(!empty($contact_form['heading']) && $contact_form['form']): ?>
 								<h2><?php echo $contact_form['heading'];?></h2>
 								<div class="h-decor"></div>
 								<?php endif;?>
@@ -130,7 +130,11 @@ get_header();
 						</div>
 					</div>
 					<div class="col-md col-lg-12 mt-4">
+					<?php 
+						if( $contact_form['form'] ): ?>
 						<?php echo do_shortcode('[contact-form-7 id="'.$contact_form['form'].'" html_class="contact-form"]'); ?>
+						<?php endif;?>
+						
 					</div>
 				</div>
 			</div>

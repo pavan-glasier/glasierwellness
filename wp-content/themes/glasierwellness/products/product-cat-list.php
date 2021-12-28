@@ -1,7 +1,15 @@
+
+<?php
+global $wp;
+$wp->parse_request();
+//echo home_url( $wp->request );
+?>
+
 <div class="col-md-4 col-lg-3 col-sm-12 column-filters d-lg-block d-none">
-    <form action="<?php echo site_url();?>/product-search/" class="content-search content-search--style2 d-flex mb-3">
+    <form action="<?php echo site_url();?>/product-search/" class="content-search content-search--style2 d-flex mb-3" method="post" >
         <div class="input-wrap">
-            <input type="text" class="form-control" name="search" placeholder="Search for Products">
+            <input type="hidden" name="title" value="<?php echo home_url( $wp->request );?>" />
+            <input type="text" class="form-control" name="search" value="" placeholder="Search for Products">
         </div>
         <button type="submit"><i class="icon-search"></i></button>
     </form>

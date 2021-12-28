@@ -15,11 +15,6 @@ get_header();
 <?php //get_search_form(); 
 ?>
 
-<style>
-.double-title:after {
-    color: #f5f5f5;
-}
-</style>
 <div class="page-content">
 	<!--section-->
 	<div class="section mt-0">
@@ -42,7 +37,8 @@ get_header();
 				</h2>
 				<div class="h-decor"></div>
 				<p style="position: relative;margin-top: 20px;"><?php esc_html_e('It looks like nothing was found at this location. Maybe try a search?', 'glasierwellness'); ?></p>
-				<a href="<?php echo site_url() ?>" class="btn mt-2">
+				<?php get_search_form(); ?>
+				<a href="<?php echo site_url() ?>" class="btn">
 					<i class="icon-right-arrow"></i>
 					<span>Home</span>
 					<i class="icon-right-arrow"></i>

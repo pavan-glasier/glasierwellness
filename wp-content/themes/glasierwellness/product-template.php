@@ -7,6 +7,11 @@
  **/
 
 get_header();
+
+
+
+
+
 ?>
 
 
@@ -17,7 +22,7 @@ get_header();
         <div class="breadcrumbs-wrap">
             <div class="container">
                 <div class="breadcrumbs">
-                    <a href="<?php echo site_url();?>">Home</a>
+                    <a href="<?php echo site_url(); ?>">Home</a>
                     <span>Products</span>
                 </div>
             </div>
@@ -34,12 +39,12 @@ get_header();
         </div>
         <div class="container mt-3 mt-lg-5">
             <div class="row">
-                
+
                 <?php get_template_part('products/product-cat-list'); ?>
-                
+
                 <div class="col-md-8 col-lg-9">
-                    
-                    <div class="filters-row align-items-center d-md-none d-flex" >
+
+                    <div class="filters-row align-items-center d-md-none d-flex">
                         <div class="d-flex align-items-center justify-content-between filters-row-left col-md-12 p-0">
                             <?php
                             $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
@@ -48,7 +53,7 @@ get_header();
                             $b = 1;
                             ?>
                             <!-- <span>Showing 1-9 of 18 results</span> -->
-                            <?php noPage_pagination($products->max_num_pages);?>
+                            <?php noPage_pagination($products->max_num_pages); ?>
                             <div class="form-inline w-100">
                                 <div class="select-wrapper">
                                     <select id="select" name="sorting">
@@ -87,57 +92,26 @@ get_header();
 
                     <div class="prd-grid">
                         <?php
-                        // $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-                        // $products = new WP_Query(array('post_type' => 'products', 'posts_per_page' => 3, 'order' => 'DESC', 'paged' => $paged));
-                        // $a = 1;
-                        // $b = 1;
                         while ($products->have_posts()) : $products->the_post(); ?>
-                            
+
                             <?php get_template_part('products/product-list'); ?>
 
 
-                        <?php endwhile; wp_reset_postdata();
+                        <?php endwhile;
+                        wp_reset_postdata();
                         ?>
-                        
+
                     </div>
                     <div class="clearfix mb-3"></div>
-                        <?php cpt_pagination($products->max_num_pages); ?>  
+                    <?php cpt_pagination($products->max_num_pages); ?>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<script></script>
-<script>
-var slideIndex = 1;
-showSlides(slideIndex);
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
 
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
 
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("demo");
-  var captionText = document.getElementById("caption");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-  captionText.innerHTML = dots[slideIndex-1].alt;
-}
-</script>
-    
+
 <?php get_footer(); ?>

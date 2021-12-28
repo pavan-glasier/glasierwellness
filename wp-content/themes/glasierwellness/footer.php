@@ -253,10 +253,44 @@
 
 
 
-<script src="<?php echo get_template_directory_uri();?>/vendor/jquery/jquery-3.2.1.min.js"></script>
+
+<!-- Modal Popup -->
+
+<div class="modal modal-product modal-form fade " id="productDetail">
+    <div class="modal-dialog" style="max-width: 800px !important;">
+        <div class="modal-content">
+            <button aria-label='Close' class='close' onclick="closePop()">
+                <i class="icon-error"></i>
+            </button>
+            <div class="modal-body">
+                <div class="modal-form text-center">
+                    <!-- <form> -->
+                        <!-- <input type="hidden" id="postID" name="postID" value="" />
+                        <input type="hidden" id="action" name="action" value="contactUs"> -->
+                        <!-- </form> -->
+                    <h3>Get Best Quote </h3>
+					
+                    <div class="row" >
+                    <!-- <div class="col-lg-6 mt-4 mt-lg-0" id="html"> -->
+				    </div>
+                        <div class="col-lg-12">
+                            <div>
+                                <?php echo do_shortcode('[contact-form-7 id="252" title="Product Inquiry Form"]');?>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 <!-- or -->
 <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+<script src="<?php echo get_template_directory_uri();?>/vendor/jquery/jquery-3.2.1.min.js"></script>
 <script src="<?php echo get_template_directory_uri();?>/vendor/jquery-migrate/jquery-migrate-3.0.1.min.js"></script>
 <script src="<?php echo get_template_directory_uri();?>/vendor/cookie/jquery.cookie.js"></script>
 <script src="<?php echo get_template_directory_uri();?>/vendor/bootstrap-datetimepicker/moment.js"></script>
@@ -273,10 +307,83 @@
 <script src="<?php echo get_template_directory_uri();?>/vendor/form-validation/jquery.form.js"></script>
 <script src="<?php echo get_template_directory_uri();?>/vendor/form-validation/jquery.validate.min.js"></script>
 <!-- Custom Scripts -->
+
 <script src="<?php echo get_template_directory_uri();?>/js/app.js"></script>
 <script src="<?php echo get_template_directory_uri();?>/color/color.js"></script>
 <script src="<?php echo get_template_directory_uri();?>/js/app-shop.js"></script>
 <script src="<?php echo get_template_directory_uri();?>/form/forms.js"></script>
+
+
+<script>
+$(document).ready(function(){
+	// $("#btnDis").attr("disabled", true);
+	if( parseInt($("#qty").attr("min")) <= parseInt($("#qty").val()) ){
+		$("#btnDis").attr("disabled", false);
+	}
+	if( $("#qty").attr("min") == "" && $("#qty").val() == "" ){
+		$("#btnDis").attr("disabled", true);
+	}
+  $("#qty").on('keyup', function(){
+	var val1 = parseInt($(this).attr("min"));
+    var val2 = parseInt($(this).val());
+
+	if( val1 > val2){
+		$("#msg").html("please enter a number greater than "+(val1-1));
+		$("#btnDis").attr("disabled", true);
+	}
+	else if(val1 <= val2){
+		$("#msg").html("")
+		$("#btnDis").attr("disabled", false);
+		
+	}
+  });
+});
+</script>
+<script>
+
+function ajaxSubmit(postID) {
+    jQuery.ajax({
+        type: "POST",
+        url: "<?php echo admin_url('admin-ajax.php'); ?>",
+        data: { action: 's_data_fetch', postID: postID  },
+         success: function(data){
+			Obj = JSON.parse(data)
+			jQuery('#productName').val(Obj.name);
+			jQuery("#productImg").val(Obj.imgUrl);
+            // setTimeout(closePop, 3000);
+
+         }
+    });
+
+    return false;
+}
+</script>
+
+<script>
+    function openProductDetail(id){
+        ajaxSubmit(id);
+        setTimeout(formPopOpen, 300);
+    }
+    function formPopOpen(){
+        $('#productDetail').addClass('show');
+        $('#productDetail').css('display', 'block');
+        $('body').append('<div class="modal-backdrop fade show" id="overlayBg"></div>');
+    }
+    function closePop(){
+        $('#productDetail').removeClass('show');
+        $('#productDetail').css('display', 'none');
+        $('#overlayBg').remove();
+    }
+</script>
+
+<script>
+// $("#btnfile").click(function () {
+//     alert($("#productImg").val());
+// });
+</script>
+
+
+
 <?php wp_footer(); ?>
 
 </body>

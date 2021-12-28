@@ -24,9 +24,18 @@
                             $a = 1;
                         ?>
                             <div class="product-previews" id="productPreviews">
+                            <?php
+                            if (has_post_thumbnail()) { ?>
                                 <a href="#" class="product-previews-item active" data-image="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID), 'full'); ?>" data-zoom-image="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID), 'full'); ?>">
                                     <img src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID), 'full'); ?>" alt="<?php echo get_the_title(); ?>" />
                                 </a>
+                            <?php } else { ?>
+                                <a href="#" class="product-previews-item active" data-image="<?= site_url(); ?>/wp-content/uploads/2021/12/no-preview.png" data-zoom-image="<?= site_url(); ?>/wp-content/uploads/2021/12/no-preview.png">
+                                    <img src="<?= site_url(); ?>/wp-content/uploads/2021/12/no-preview.png" alt="<?php echo get_the_title(); ?>" />
+                                </a>
+                            <?php }
+                            ?>
+                                
                                 <?php foreach ($images as $image) : ?>
                                     <a href="#" class="product-previews-item" data-image="<?php echo esc_url($image['url']); ?>" data-zoom-image="<?php echo esc_url($image['url']); ?>">
                                         <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
@@ -36,7 +45,14 @@
                             </div>
                         <?php endif; ?>
                         <div class="product-block-mainimage">
+                        <?php
+                        if (has_post_thumbnail()) { ?>
                             <img id="mainImage" src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID), 'full'); ?>" data-zoom-image="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID), 'full'); ?>" />
+                        <?php } else { ?>
+                            <img id="mainImage" src="<?= site_url(); ?>/wp-content/uploads/2021/12/no-preview.png" data-zoom-image="<?= site_url(); ?>/wp-content/uploads/2021/12/no-preview.png" />
+                        <?php }
+                        ?>
+                            
                         </div>
 
                     </div>
@@ -44,14 +60,7 @@
 
                 <div class="col-md-6">
                     <div class="product-block-info">
-                        <!-- <div class="star-rating"><span class="txt-gradient"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i></span></span>
-                            <span class="rating-text">2 customer reviews</span>
-                        </div> -->
                         <h2 class="product-block-title"><?php echo get_the_title(); ?></h2>
-
-
-                        <!-- <div class="product-block-price">$46,97</div> -->
-
 
                         <div class="product-block-description">
                             <div>
@@ -75,9 +84,11 @@
                         <div class="product-block-price-comment mt-15">
                             <?php $quantity = get_field('quantity'); ?>
                             <div class="">
-                                <input type="number" name="quantity" class="form-control qty" value="<?php echo $quantity['minimum']; ?>" min="<?php echo $quantity['minimum']; ?>" max="<?php echo $quantity['maximum']; ?>" style="padding-left: 16px !important;" />
+                                <input type="number" id="qty" name="quantity" class="form-control qty" value="<?php echo $quantity['minimum']; ?>" min="<?php echo $quantity['minimum']; ?>" max="<?php echo $quantity['maximum']; ?>" style="padding-left: 16px !important;" />
                             </div>
+                            <span id="msg" class="err"></span>
                         </div>
+                        <button id="btnDis" class="btn" onclick="openProductDetail(<?php echo $post->ID;?>)"><i class="icon-right-arrow"></i>Get Best Quote<i class="icon-right-arrow"></i></button> 
                     </div>
                 </div>
             </div>

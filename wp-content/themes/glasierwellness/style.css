@@ -129,7 +129,9 @@ button.sub-menu-toggle {
     align-items: center;
     overflow: hidden;
 }
-
+.double-title:after {
+    color: #f5f5f5;
+}
 
 
 .modal-product .modal-dialog {
@@ -202,10 +204,17 @@ body .footer-subscribe .input-group .form-control {
 .wpcf7 form.invalid .wpcf7-response-output{
     background: #ffb900;
     color: #fff;
+    line-height: normal;
 }
 .wpcf7 form.failed .wpcf7-response-output{
     background: #dc3232;
     color: #fff;
+    line-height: normal;
+}
+.wpcf7 form.sent .wpcf7-response-output {
+    background: #46b450;
+    color: #fff;
+    line-height: normal;
 }
 .quick-links {
     list-style: none;
@@ -396,14 +405,19 @@ span.vcard {
 .form-control.qty {
     width: 15%;
 }
-a.btn {
+.btn {
     border-radius: 30px !important;
 }
 .highlight {
-    color: #fff;
-    background: #488dca;
+    color: #488dca;
+    background: #ffffff;
     border-radius: 30px;
-    padding: 3px;
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    line-height: 22px;
+    text-align: center;
+    border: 1px solid;
 }
 .search-post {
     border: 1px solid #e7e7e7;
@@ -443,12 +457,33 @@ span.badges {
     position: relative;
 }
 /*  */
-a.prev.page-numbers svg.svg-icon {
+.prev.page-numbers svg.svg-icon {
     position: absolute;
     top: 0;
     left: -22px;
 }
-a.next.page-numbers svg.svg-icon {
+.next.page-numbers svg.svg-icon {
     position: absolute;
     top: 0;
+}
+.postThumb {
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+}
+.postThumb img{
+    width: 100%;
+
+}
+.err {
+    color: red;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+table.shop_attributes {
+    width: 100%;
+}
+table.shop_attributes th{
+    width: 20%;
 }

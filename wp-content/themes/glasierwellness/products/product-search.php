@@ -9,7 +9,8 @@
 get_header();
 ?>
 <?php
-$search = $_GET['search'];
+$search = $_POST['search'];
+$title = $_POST['title'];
 // echo $search;
 ?>
 <div class="page-content">
@@ -19,7 +20,7 @@ $search = $_GET['search'];
             <div class="container">
                 <div class="breadcrumbs">
                     <a href="<?php echo site_url(); ?>">Home</a>
-                    <span>Search Products : "<?php echo $search;?>"</span>
+                    <span>Search Products : "<?php echo $search; ?>"</span>
                 </div>
             </div>
         </div>
@@ -29,40 +30,81 @@ $search = $_GET['search'];
     <div class="section page-content-first">
 
         <div class="container mt-3 mb-lg-5 mt-lg-5">
-            <div class="row">
-                <div class="col-md-12 col-lg-12">
-                    <div class="prd-grid">
-                        <?php
-                        $the_query = new WP_Query(
-                            array(
-                                'posts_per_page' => -1,
-                                's' => esc_attr($_GET['search']),
-                                'post_type' => 'products'
-                            )
-                        );
-                        if ($_GET['search'] == "") {
-                            echo '<div class="text-center mb-2 mb-md-3 mb-lg-4"><h1>invalid keyword!</h1><div class="h-decor"></div></div>';
 
-                        }
-                        else if ($_GET['search'] == " ") {
-                            echo '<div class="text-center mb-2 mb-md-3 mb-lg-4"><h1>Nothing Found !</h1><div class="h-decor"></div></div>';
-                        } else {
-                            if ($the_query->have_posts()) :
-                                while ($the_query->have_posts()) : $the_query->the_post(); ?>
-                                    <?php
-                                    include('product-list.php');
-                                    ?>
-                        <?php endwhile;
-                                wp_reset_postdata();
-                            else :
-                                echo '<div class="text-center mb-2 mb-md-3 mb-lg-4"><h1>No Results Found !</h1><div class="h-decor"></div></div>';
-                            endif;
-                        }
-                        ?>
-                    </div>
-                    <div class="clearfix"></div>
+            <?php
+            $the_query = new WP_Query(
+                array(
+                    'posts_per_page' => -1,
+                    's' => esc_attr($_POST['search']),
+                    'post_type' => 'products'
+                )
+            );
+            if ($_POST['search'] == "") { ?>
+
+                <div class="title-wrap text-center">
+                    <h2 class="double-title double-title--center double-title--vcenter" data-title="<?php esc_html_e('invalid keyword!', 'glasierwellness'); ?>">
+                        <span><?php esc_html_e('invalid keyword!', 'glasierwellness'); ?></span>
+                    </h2>
+                    <div class="h-decor"></div>
+                    <p></p>
+                    <a href="<?php echo $title; ?>" class="btn">
+                        <i class="icon-right-arrow"></i>
+                        <span>Back</span>
+                        <i class="icon-right-arrow"></i>
+                    </a>
                 </div>
-            </div>
+
+
+            <?php } else if ($_POST['search'] == " ") { ?>
+                <div class="title-wrap text-center">
+                    <h2 class="double-title double-title--center double-title--vcenter" data-title="<?php esc_html_e('Nothing Found !', 'glasierwellness'); ?>">
+                        <span><?php esc_html_e('Nothing Found !', 'glasierwellness'); ?></span>
+                    </h2>
+                    <div class="h-decor"></div>
+                    <p></p>
+                    <a href="<?php echo $title; ?>" class="btn">
+                        <i class="icon-right-arrow"></i>
+                        <span>Back</span>
+                        <i class="icon-right-arrow"></i>
+                    </a>
+                </div>
+            <?php } else { ?>
+
+
+
+                <?php if ($the_query->have_posts()) : ?>
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12">
+                            <div class="prd-grid">
+                                <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
+
+                                    <?php get_template_part('products/product-list'); ?>
+                                <?php endwhile;
+                                wp_reset_postdata();
+                                ?>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                <?php
+                else : ?>
+
+                    <div class="title-wrap text-center">
+                        <h2 class="double-title double-title--center double-title--vcenter" data-title="<?php esc_html_e('No Results Found !', 'glasierwellness'); ?>">
+                            <span><?php esc_html_e('No Results Found !', 'glasierwellness'); ?></span>
+                        </h2>
+                        <div class="h-decor"></div>
+                        <p></p>
+                        <a href="<?php echo $title; ?>" class="btn">
+                            <i class="icon-right-arrow"></i>
+                            <span>Back</span>
+                            <i class="icon-right-arrow"></i>
+                        </a>
+                    </div>
+            <?php endif;
+            }
+            ?>
+
         </div>
     </div>
 </div>
