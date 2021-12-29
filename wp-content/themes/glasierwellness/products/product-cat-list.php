@@ -1,18 +1,14 @@
 
+
+
 <?php
-global $wp;
-$wp->parse_request();
-//echo home_url( $wp->request );
-?>
+    $category = get_queried_object();
+    $cat_ID = $category->term_id;
+    $cat_name = $category->name;
+    ?>
 
 <div class="col-md-4 col-lg-3 col-sm-12 column-filters d-lg-block d-none">
-    <form action="<?php echo site_url();?>/product-search/" class="content-search content-search--style2 d-flex mb-3" method="post" >
-        <div class="input-wrap">
-            <input type="hidden" name="title" value="<?php echo home_url( $wp->request );?>" />
-            <input type="text" class="form-control" name="search" value="" placeholder="Search for Products">
-        </div>
-        <button type="submit"><i class="icon-search"></i></button>
-    </form>
+<?php get_template_part('products/productSearchForm'); ?>
     <div class="column-filters-inside">
         <div class="side-block">
             <h3 class="side-block-title">Categories</h3>
@@ -26,7 +22,11 @@ $wp->parse_request();
                     // $term_list = '<p class="my_term-archive"></p>';
                     foreach ($terms as $term) {
                         $i++;
-                        $term_list .= '<li><a href="' . esc_url(get_term_link($term)) . '" alt="">' . $term->name . '</a></li>';
+                        if($cat_name == $term->name){
+                            $term_list .= '<li class="active-cat"><a href="' . esc_url(get_term_link($term)) . '" alt="">' . $term->name . '</a></li>';
+                        }else{
+                            $term_list .= '<li><a href="' . esc_url(get_term_link($term)) . '" alt="">' . $term->name . '</a></li>';
+                        }
                     }
                     echo $term_list;
                 }

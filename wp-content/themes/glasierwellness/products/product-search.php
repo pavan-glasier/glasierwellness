@@ -47,6 +47,7 @@ $title = $_POST['title'];
                     </h2>
                     <div class="h-decor"></div>
                     <p></p>
+                    <?php get_template_part('products/productSearchForm'); ?>
                     <a href="<?php echo $title; ?>" class="btn">
                         <i class="icon-right-arrow"></i>
                         <span>Back</span>
@@ -62,6 +63,8 @@ $title = $_POST['title'];
                     </h2>
                     <div class="h-decor"></div>
                     <p></p>
+                    <?php get_template_part('products/productSearchForm'); ?>
+                    
                     <a href="<?php echo $title; ?>" class="btn">
                         <i class="icon-right-arrow"></i>
                         <span>Back</span>
@@ -95,6 +98,7 @@ $title = $_POST['title'];
                         </h2>
                         <div class="h-decor"></div>
                         <p></p>
+                        <?php get_template_part('products/productSearchForm'); ?>
                         <a href="<?php echo $title; ?>" class="btn">
                             <i class="icon-right-arrow"></i>
                             <span>Back</span>

@@ -487,3 +487,19 @@ table.shop_attributes {
 table.shop_attributes th{
     width: 20%;
 }
+
+
+li.active-cat {
+    font-weight: 900;
+}
+li.active-cat:before {
+    font-size: 10px !important;
+    font-weight: 900 !important;
+}
+
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+    display: none !important;
+    transition: all .2s ease-in-out;
+}

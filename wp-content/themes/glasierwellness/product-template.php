@@ -47,8 +47,14 @@ get_header();
                     <div class="filters-row align-items-center d-md-none d-flex">
                         <div class="d-flex align-items-center justify-content-between filters-row-left col-md-12 p-0">
                             <?php
-                            $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-                            $products = new WP_Query(array('post_type' => 'products', 'posts_per_page' => 12, 'order' => 'DESC', 'paged' => $paged));
+                            // $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+                            $paged = 1;
+                            $products = new WP_Query(array(
+                                'post_type' => 'products', 
+                                'posts_per_page' => 9,
+                                'order' => 'DESC',
+                                'paged' => 1
+                            ));
                             $a = 1;
                             $b = 1;
                             ?>
@@ -90,7 +96,7 @@ get_header();
                     </div>
 
 
-                    <div class="prd-grid">
+                    <div class="prd-grid" id="prd-grid">
                         <?php
                         while ($products->have_posts()) : $products->the_post(); ?>
 
@@ -102,8 +108,12 @@ get_header();
                         ?>
 
                     </div>
+                    
                     <div class="clearfix mb-3"></div>
-                    <?php cpt_pagination($products->max_num_pages); ?>
+                    <div class="row justify-content-center mt-5 mb-5 hidden" id="loadMore">
+                        <img src="<?php echo site_url()?>/wp-content/uploads/2021/12/loadmore.gif" alt="loading"/>
+                    </div>
+                    <?php //cpt_pagination($products->max_num_pages); ?>
                 </div>
             </div>
         </div>

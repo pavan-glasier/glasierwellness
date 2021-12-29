@@ -21,7 +21,7 @@
     <div class="section page-content-first">
         <div class="container">
             <div class="text-center mb-2  mb-md-3 mb-lg-4">
-                <h1>All Products</h1>
+                <h1><?php echo $cat_name;?> Products</h1>
                 <div class="h-decor"></div>
             </div>
         </div>
@@ -33,12 +33,13 @@
                     <div class="filters-row align-items-center d-md-none d-flex" >
                         <div class="d-flex align-items-center justify-content-between filters-row-left col-md-12 p-0">
                             <?php
-                            $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+                            // $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+                            $paged = 1;
                             $products = new WP_Query(array(
                                 'post_type' => 'products',
                                 'posts_per_page' => 9,
                                 'order' => 'DESC',
-                                'paged' => $paged,
+                                'paged' => 1,
                                 'tax_query' => array(
                                     array(
                                         'taxonomy' => 'product_category',
@@ -51,7 +52,8 @@
                             $b = 1;
                             ?>
                             <!-- <span>Showing 1-9 of 18 results</span> -->
-                            <?php noPage_pagination($products->max_num_pages);?>
+                            <?php //noPage_pagination($products->max_num_pages);?>
+                            <input type="hidden" name="categoryID" id="categoryID" value="<?php echo $cat_ID;?>" />
                             <div class="form-inline w-100">
                                 <div class="select-wrapper">
                                     <select id="select" name="sorting">
@@ -69,9 +71,7 @@
                                                     $term_list .= '<option value="' . esc_url(get_term_link($term)) . '" selected >' . $term->name . '</option>';
                                                 }else{
                                                     $term_list .= '<option value="' . esc_url(get_term_link($term)) . '">' . $term->name . '</option>';
-                                                }
-
-                                                
+                                                }                                                
                                             }
                                             echo $term_list;
                                         }
@@ -94,12 +94,9 @@
                     </div>
 
 
-                    <div class="prd-grid">
+                    <div class="prd-grid" id="prd-gridCat">
                         <?php
-                        // $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-                        // $products = new WP_Query(array('post_type' => 'products', 'posts_per_page' => 3, 'order' => 'DESC', 'paged' => $paged));
-                        // $a = 1;
-                        // $b = 1;
+                        
                         while ($products->have_posts()) : $products->the_post(); ?>
                             
                             <?php get_template_part('products/product-list'); ?>
@@ -110,7 +107,11 @@
                         
                     </div>
                     <div class="clearfix mb-3"></div>
-                        <?php cpt_pagination($products->max_num_pages); ?>  
+                    <div class="row justify-content-center mt-5 mb-5 hidden" id="loadMoreCat">
+                        <img src="<?php echo site_url()?>/wp-content/uploads/2021/12/loadmore.gif" alt="loading"/>
+                        
+                    </div>
+                        <?php //cpt_pagination($products->max_num_pages); ?>  
                 </div>
             </div>
         </div>

@@ -314,6 +314,71 @@
 <script src="<?php echo get_template_directory_uri();?>/form/forms.js"></script>
 
 
+
+<!-- PRODUCT LOADMORE AJAX -->
+<script>
+    var ajaxurl = '<?php echo admin_url( 'admin-ajax.php' );?>';
+    var page = 2;
+$(window).scroll(function() {
+    if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+        var data = {
+            'action': 'load_products_by_ajax',
+            'page': page,
+            'security': '<?php echo wp_create_nonce( 'load_more_products' );?>'
+        };
+ 
+        $.post(ajaxurl, data, function(response) {
+            if($.trim(response) != '') {
+				$('#loadMore').removeClass('hidden');
+				setTimeout(
+				function () {
+					$('#loadMore').addClass('hidden');
+					$('#prd-grid').append(response);
+				},2000);
+				page++;
+            } else {
+                $('#loadMore').addClass('hidden');
+            }
+        });
+    }
+});
+</script>
+<!-- END PRODUCT LOADMORE AJAX -->
+
+
+
+<!-- CATEGORY PRODUCT LOADMORE AJAX -->
+<script>
+    var catAjaxurl = '<?php echo admin_url( 'admin-ajax.php' );?>';
+    var paged = 2;
+	var categoryID = $('#categoryID').val();
+	// alert(categoryID);
+$(window).scroll(function() {
+    if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+        var catData = {
+            'action': 'load_catproducts_by_ajax',
+			'categoryID': categoryID,
+            'page': paged,
+            'security': '<?php echo wp_create_nonce( 'load_more_catproducts' );?>'
+        };
+ 
+        $.post(catAjaxurl, catData, function(resp) {
+            if($.trim(resp) != '') {
+				$('#loadMoreCat').removeClass('hidden');
+				setTimeout(
+				function () {
+					$('#loadMoreCat').addClass('hidden');
+					$('#prd-gridCat').append(resp);
+				},2000);
+				paged++;
+            } else {
+                $('#loadMoreCat').addClass('hidden');
+            }
+        });
+    }
+});
+</script>
+<!-- END CATEGORY PRODUCT LOADMORE AJAX -->
 <script>
 $(document).ready(function(){
 	// $("#btnDis").attr("disabled", true);

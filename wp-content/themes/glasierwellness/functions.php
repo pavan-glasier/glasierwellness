@@ -744,9 +744,142 @@ function foot_theme_scripts()
 	//   wp_enqueue_script( 'app-shop', get_template_directory_uri() . '/js/app-shop.js');
 	//   wp_enqueue_script( 'forms', get_template_directory_uri() . '/form/forms.js');
 
+
 }
 
+
+
 add_action('wp_footer', 'foot_theme_scripts');
+
+
+
+
+// PRODUCT PAGE LOAD MORE
+
+
+
+add_action('wp_ajax_load_products_by_ajax', 'load_products_by_ajax_callback');
+add_action('wp_ajax_nopriv_load_products_by_ajax', 'load_products_by_ajax_callback');
+
+function load_products_by_ajax_callback()
+{
+	check_ajax_referer('load_more_products', 'security');
+	$paged = $_POST['page'];
+	$args = array(
+		'post_type' => 'products',
+		'posts_per_page' => 9,
+        'order' => 'DESC', 
+		'paged' => $paged,
+	);
+	$products = new WP_Query($args);
+?>
+
+
+	<?php if ($products->have_posts()) : ?>
+		<?php while ($products->have_posts()) : $products->the_post();
+		 ?>
+			<div class="prd">
+				<div class="prd-img">
+					<a href="<?php the_permalink(); ?>">
+						<?php
+						if (has_post_thumbnail()) { ?>
+							<img src="<?php echo wp_get_attachment_url(get_post_thumbnail_id(), 'full'); ?>" class="img-fluid" alt="<?php echo get_the_title(); ?>">
+						<?php } else { ?>
+							<img src="<?= site_url(); ?>/wp-content/uploads/2021/12/no-preview.png" alt="noprivew">
+						<?php }
+						?>
+					</a>
+				</div>
+				<div class="prd-info">
+					<h3><a href="<?php the_permalink(); ?>"><?php echo get_the_title(); ?></a></h3>
+					<a class="btn" href="<?php the_permalink(); ?>">
+						<i class="icon-right-arrow"></i>Details<i class="icon-right-arrow"></i>
+					</a>
+				</div>
+			</div>
+
+
+
+		<?php endwhile; ?>
+	<?php
+	endif;
+
+	wp_die();
+}
+
+// END PRODUCT PAGE LOAD MORE
+
+
+
+
+// START CATEGORY PAGE LOAD MORE
+add_action('wp_ajax_load_catproducts_by_ajax', 'load_catproducts_by_ajax_callback');
+add_action('wp_ajax_nopriv_load_catproducts_by_ajax', 'load_catproducts_by_ajax_callback');
+
+function load_catproducts_by_ajax_callback()
+{
+	check_ajax_referer('load_more_catproducts', 'security');
+	$catPaged = $_POST['page'];
+	$categoryID = $_POST['categoryID'];
+	// echo $catPaged;
+	// echo $categoryID;
+	
+	$catArgs = array(
+		'post_type' => 'products',
+		'posts_per_page' => 9,
+        'order' => 'DESC', 
+		'paged' => $catPaged,
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'product_category',
+				'field'    => 'id',
+				'terms'    => $categoryID,
+			),
+		),
+	);
+	$catProducts = new WP_Query($catArgs);
+?>
+
+
+	<?php if ($catProducts->have_posts()) : ?>
+		<?php while ($catProducts->have_posts()) : $catProducts->the_post();
+		 ?>
+
+			<div class="prd">
+				<div class="prd-img">
+					<a href="<?php the_permalink(); ?>">
+						<?php
+						if (has_post_thumbnail()) { ?>
+							<img src="<?php echo wp_get_attachment_url(get_post_thumbnail_id(), 'full'); ?>" class="img-fluid" alt="<?php echo get_the_title(); ?>">
+						<?php } else { ?>
+							<img src="<?= site_url(); ?>/wp-content/uploads/2021/12/no-preview.png" alt="noprivew">
+						<?php }
+						?>
+					</a>
+				</div>
+				<div class="prd-info">
+					<h3><a href="<?php the_permalink(); ?>"><?php echo get_the_title(); ?></a></h3>
+					<a class="btn" href="<?php the_permalink(); ?>">
+						<i class="icon-right-arrow"></i>Details<i class="icon-right-arrow"></i>
+					</a>
+				</div>
+			</div>
+
+
+
+		<?php endwhile; ?>
+	<?php
+	endif;
+
+	wp_die();
+}
+
+// END LOAD MORE
+
+
+
+
+
 
 // Register Nav Walker class_alias
 require_once('wp-bootstrap-navwalker.php');
@@ -973,22 +1106,22 @@ function s_data_fetch()
 			'post_type' => 'products'
 		)
 	);
-?>
-		<?php
-		if ($the_query->have_posts()) :
-			while ($the_query->have_posts()) : $the_query->the_post(); ?>
+	?>
+	<?php
+	if ($the_query->have_posts()) :
+		while ($the_query->have_posts()) : $the_query->the_post(); ?>
 
 			<?php
 			echo json_encode(array(
 				'name' => get_the_title(),
 				'imgUrl' => esc_url(wp_get_attachment_url(get_post_thumbnail_id($_POST['postID']), 'full')),
 			));
-			?>				
-					
-		<?php endwhile;
-			wp_reset_postdata();
-		else :
-			echo '<span>No Results Found !</span>';
-		endif;
-die();
+			?>
+
+<?php endwhile;
+		wp_reset_postdata();
+	else :
+		echo '<span>No Results Found !</span>';
+	endif;
+	die();
 }

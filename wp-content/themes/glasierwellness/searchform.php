@@ -28,7 +28,7 @@ $glasierwellness_aria_label = ! empty( $args['aria_label'] ) ? 'aria-label="' . 
 
 	<form method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>" class="content-search content-search--style2 d-flex mb-3" >
         <div class="input-wrap">
-            <input type="text" class="form-control" value="<?php echo get_search_query(); ?>" name="s" placeholder="Search for Products">
+            <input type="text" class="form-control" value="<?php echo get_search_query(); ?>" name="s" placeholder="Search">
         </div>
         <button type="submit"><i class="icon-search"></i></button>
     </form>
