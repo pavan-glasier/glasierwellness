@@ -96,7 +96,39 @@ Glasier Wellness is distributed under the terms of the GNU GPL.
  */
 
 /* Categories 01 to 03 are the basics. */
+::selection {
+    background: #488dca;
+    color: #fff;
+}
 
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #488dca2e; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #488dca; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #054371; 
+}
+
+
+
+
+.text-danger {
+    color: #dc3232;
+    font-size: 14px;
+    font-weight: 600;
+}
 .header-social [class*='fa-'],
 .header-social [class*='fas-'] {
     display: block;
@@ -201,10 +233,14 @@ body .footer-subscribe .input-group .form-control {
     max-width: 300px;
     border-radius: 10px;
 }
+.wpcf7-response-output{
+    border-radius: 25px;
+}
 .wpcf7 form.invalid .wpcf7-response-output{
     background: #ffb900;
     color: #fff;
     line-height: normal;
+
 }
 .wpcf7 form.failed .wpcf7-response-output{
     background: #dc3232;
@@ -246,7 +282,10 @@ body .footer-subscribe .input-group .form-control {
 .quick-links li a:hover::before {
     transform: translate(-30px, 0px);
 }
-
+.wpcf7-not-valid-tip {
+    font-size: .8em;
+    font-weight: 500 !important;
+}
 form.footer-inquiry {
     position: relative;
 }
@@ -315,7 +354,9 @@ body .footer-inquiry .input-group .form-control {
 span.saparts:last-child {
     display: none;
 }
-
+.product-previews-item:last-child {
+    margin-bottom: 0;
+}
 .single.single-post .blog-post .post-image {
     height: auto;
 }
@@ -400,7 +441,10 @@ span.vcard {
     clear: unset;
 }
 
-
+.product-previews {
+    height: 570px;
+    overflow: auto;
+}
 
 .form-control.qty {
     width: 15%;
@@ -502,4 +546,9 @@ li.active-cat:before {
     visibility: hidden;
     display: none !important;
     transition: all .2s ease-in-out;
+}
+.loadMore img{
+    width: 65px;
+    filter: hue-rotate(30deg);
+    opacity: 0.8;
 }

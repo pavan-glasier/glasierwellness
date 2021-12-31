@@ -821,8 +821,6 @@ function load_catproducts_by_ajax_callback()
 	check_ajax_referer('load_more_catproducts', 'security');
 	$catPaged = $_POST['page'];
 	$categoryID = $_POST['categoryID'];
-	// echo $catPaged;
-	// echo $categoryID;
 	
 	$catArgs = array(
 		'post_type' => 'products',
@@ -1125,3 +1123,194 @@ function s_data_fetch()
 	endif;
 	die();
 }
+
+
+
+
+
+
+// API SUBMIT DATA
+function on_submit( $form ) {
+    if ( $form->id === 326) {
+	    $submission = WPCF7_Submission::get_instance();
+	    $data = $submission->get_posted_data();
+
+	    $name = sanitize_text_field($data['sname']);
+	    $age = sanitize_text_field($data['sage']);
+	    $city = sanitize_text_field($data['scity']);
+	    
+	    $url = 'http://192.168.0.128/php-rest-api/api-insert.php';
+
+	    $response = wp_safe_remote_post($url, [
+	        'body' => json_encode([
+	            'sname' => $name,
+	            'sage' => $age,
+	            'scity' => $city,
+	        ]),
+	    ]);
+
+	    if ( is_wp_error($response) ) {
+	        // $abort = TRUE;
+
+	        $body = wp_remote_retrieve_body($response);
+	        $result = json_decode($body);
+	        $msg = $result->message;
+	        $submission->set_response($result->message);
+	        $submission->set_status($result->status);
+	        error_log(print_r($msg, true));
+	    }
+	}
+}
+
+add_action('wpcf7_mail_sent', 'on_submit', 10, 3);
+
+// function action_wpcf7_mail_sent( $contact_form ) {
+
+
+//       if ( $contact_form->id === 326) {
+//         $submission = WPCF7_Submission::get_instance();
+//         if ( $submission ) {
+//             $posted_data = $submission->get_posted_data();
+
+            
+
+//             $name = $posted_data['student_name'];
+//             $email = $posted_data['age'];
+//             $phone = $posted_data['city'];
+
+
+//             $url = 'http://localhost/php-rest-api/api-insert.php';
+//             $args = array(
+//             		'method' => 'POST',
+//             		'headers' => array(
+//             			'Accept' => 'application/json',
+// 	                    'Content-Type' => 'application/json'
+//                 	),
+//                 	'body' => array(
+// 	                    'name' => $posted_data['student_name'],
+// 	                    'age' => $posted_data['age'],
+// 	                    'city' => $posted_data['city']
+//                 	)
+//             );
+            
+
+//              $apiResponse = wp_remote_post( $url, $args );
+             
+//              $apiBody = json_decode( wp_remote_retrieve_body( $apiResponse ) );
+//              error_log(print_r($apiResponse, true));
+//             retrun;
+//         }
+//      }
+// }
+// // add the action 
+// add_action( 'wpcf7_mail_sent', 'action_wpcf7_mail_sent', 10, 1 );
+
+
+
+
+
+// $apiUrl = 'http://localhost/php-rest-api/api-fetch-all.php';
+// $response = wp_remote_get($apiUrl);
+// $responseBody = wp_remote_retrieve_body( $response );
+// $result = json_decode( $responseBody );
+// if ( is_array( $result ) && ! is_wp_error( $result ) ) {
+//     // print_r($result);
+//     foreach ($result as $key) {
+//     	echo $key->id;
+//     }
+// } else {
+//     echo "error";
+// }
+
+
+// function getValue($data){
+
+// $data = array(
+// 	'name' => $_POST['product_name'],
+// 	'qty' => $_POST['quantity']
+// );
+// return $data;
+// }
+
+// add_filter( 'wpcf7_form_elements', function( $form ) {
+//   $form = str_replace( 
+//   	'ProductName',
+//   	$_POST['product_name'],
+//   	$form 
+//   );
+//   $form = str_replace( 
+//   	'Units',
+//   	$_POST['quantity'],
+//   	$form 
+//   );
+//   return $form;
+// } );
+
+
+function replace_content($content)
+    {
+    $content = str_replace('ProductName', $_POST['product_name'], $content);
+    $content = str_replace('Units', $_POST['quantity'], $content);
+    return $content;
+  }
+  add_filter('wpcf7_form_elements','replace_content');
+
+
+
+
+
+
+
+
+  // API SUBMIT DATA
+function on_submitInq( $form ) {
+    if ( $form->id === 252) {
+	    $submission = WPCF7_Submission::get_instance();
+	    $data = $submission->get_posted_data();
+	    
+	    $product_name = sanitize_text_field($data['product_name']);
+	    $requirement = sanitize_text_field($data['requirement']);
+	    $units = sanitize_text_field($data['units']);
+	    $remark = sanitize_text_field($data['remark']);
+	    $party_name = sanitize_text_field($data['party_name']);
+	    $company_name = sanitize_text_field($data['company_name']);
+	    $phone = sanitize_text_field($data['phone']);
+	    $email = sanitize_text_field($data['email']);
+	    $location = sanitize_text_field($data['location']);
+	    $country = sanitize_text_field($data['country']);
+	    $state = sanitize_text_field($data['state']);
+	    $city = sanitize_text_field($data['city']);
+	    
+	    $url = 'http://192.168.0.128/php-rest-api/glasierwellness-api-insert.php';
+
+	    $response = wp_safe_remote_post($url, [
+	        'body' => json_encode([
+	            'product_name' => $product_name,
+	            'requirement' => $requirement,
+	            'units' => $units,
+	            'remark' => $remark,
+	            'party_name' => $party_name,
+	            'company_name' => $company_name,
+	            'phone' => $phone,
+	            'email' => $email,
+	            'location' => $location,
+	            'country' => $country,
+	            'state' => $state,
+	            'city' => $city,
+	        ]),
+	    ]);
+
+	    if ( is_wp_error($response) ) {
+	        // $abort = TRUE;
+
+	        $body = wp_remote_retrieve_body($response);
+	        $result = json_decode($body);
+	        $msg = $result->message;
+	        $submission->set_response($result->message);
+	        $submission->set_status($result->status);
+	        
+	    }
+	}
+}
+
+add_action('wpcf7_mail_sent', 'on_submitInq', 10, 1);

@@ -110,7 +110,7 @@ get_header();
                     </div>
                     
                     <div class="clearfix mb-3"></div>
-                    <div class="row justify-content-center mt-5 mb-5 hidden" id="loadMore">
+                    <div class="row justify-content-center mt-5 mb-5 loadMore hidden" id="loadMore">
                         <img src="<?php echo site_url()?>/wp-content/uploads/2021/12/loadmore.gif" alt="loading"/>
                     </div>
                     <?php //cpt_pagination($products->max_num_pages); ?>

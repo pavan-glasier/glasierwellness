@@ -81,14 +81,18 @@
 
                         </div>
 
-                        <div class="product-block-price-comment mt-15">
-                            <?php $quantity = get_field('quantity'); ?>
-                            <div class="">
-                                <input type="number" id="qty" name="quantity" class="form-control qty" value="<?php echo $quantity['minimum']; ?>" min="<?php echo $quantity['minimum']; ?>" max="<?php echo $quantity['maximum']; ?>" style="padding-left: 16px !important;" />
+                        <form action="<?php echo site_url();?>/inquiry/" method="post">
+                            <div class="product-block-price-comment mt-15">
+                                <?php $quantity = get_field('quantity'); ?>
+                                <div class="">
+                                    <input type="hidden" id="product_name" name="product_name" value="<?php echo get_the_title(); ?>" />
+                                    <input type="number" id="qty" name="quantity" class="form-control qty" value="<?php echo $quantity['minimum']; ?>" min="<?php echo $quantity['minimum']; ?>" max="<?php echo $quantity['maximum']; ?>" style="padding-left: 16px !important;" />
+                                </div>
+                                <span id="msg" class="err"></span>
                             </div>
-                            <span id="msg" class="err"></span>
-                        </div>
-                        <button id="btnDis" class="btn" onclick="openProductDetail(<?php echo $post->ID;?>)"><i class="icon-right-arrow"></i>Get Best Quote<i class="icon-right-arrow"></i></button> 
+                            <!-- <button id="btnDis" class="btn mt-2" onclick="openProductDetail(<?php echo $post->ID;?>)"><i class="icon-right-arrow"></i>Get Best Quote<i class="icon-right-arrow"></i></button>  -->
+                            <button type="submit" id="btnDis" class="btn mt-2"><i class="icon-right-arrow"></i>Get Inquiry<i class="icon-right-arrow"></i></button>
+                        </form>
                     </div>
                 </div>
             </div>

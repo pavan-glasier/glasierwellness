@@ -104,55 +104,6 @@ get_header();
 
 
 
-<!-- HIDE SECTION -->
-    <!--section departments-->
-    <div class="section bg-bottom bg-right bg-norepeat bg-md-none bg-fixed section-bottom-padding section-top-padding" style="display: none; background-image: url(<?php echo get_template_directory_uri();?>/images/bg-bottom-right.png)" >
-        <div class="container">
-            <div class="row mt-lg-4">
-                <div class="col-md-6 col-xl-6 pr-xl-7">
-                    <div class="department-tabs2">
-                        <div class="department-tab2">
-                            <div class="department-tab2-number">1</div>
-                            <div class="department-tab2-text">Latest Equipment</div>
-                            <div class="department-tab2-decor"></div>
-                        </div>
-                        <div class="department-tab2">
-                            <div class="department-tab2-number">2</div>
-                            <div class="department-tab2-text">Quality Service</div>
-                            <div class="department-tab2-decor"></div>
-                        </div>
-                        <div class="department-tab2">
-                            <div class="department-tab2-number">3</div>
-                            <div class="department-tab2-text">Skilled Team</div>
-                            <div class="department-tab2-decor"></div>
-                        </div>
-                        <div class="department-tab2">
-                            <div class="department-tab2-number">4</div>
-                            <div class="department-tab2-text">Positive Reviews</div>
-                            <div class="department-tab2-decor"></div>
-                        </div>
-                    </div>
-                    <div class="department-tabs2-bg"><img src="<?php echo get_template_directory_uri();?>/images/bg-department.png" alt=""></div>
-                </div>
-                <div class="col-md-6 col-xl-6">
-                    <div class="department-carousel2">
-                        <div class="department-item">
-                            <div class="h-sub theme-color">About us</div>
-                            <h2>Personal Licensed<br>Diagnostic <span class="theme-color">Lab Services</span></h2>
-                            <p>We pride ourselves on the trained skills needed for the preparation of diversified testing. We are of the sound belief that timely diagnosis could cast off the scar of many of the grave diseases. It can be made possible if you consult your doctor for suspected diseases.</p>
-                            <ul class="marker-list-md">
-                                <li>All reports for clients are made simple and easy to understand</li>
-                                <li>User- friendly website offers custom settings for each physician</li>
-                                <li>We customize panels to meet physician’s needs.</li>
-                            </ul>
-                            <a href="#" class="btn mt-3" data-toggle="modal" data-target="#modalBookingForm"><i class="icon-right-arrow"></i><span>schedule a visit</span><i class="icon-right-arrow"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--//section  departments-->
 
 
 
@@ -302,255 +253,169 @@ get_header();
         </div>
     </div>
     <!--//section services -->
-    <!--section faq-->
-    <div class="section mt-lg-large" style="display: none;">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="container-shift-left mb-3 mb-md-4">
-                    <div class="title-wrap text-center text-lg-left">
-                        <h2 class="h1 double-title double-title--vcenter" data-title="FAQ"><span>Patient <span class="theme-color">Information</span></span></h2>
-                    </div>
-                </div>
-                <div class="image-shift-right">
-                    <img src="<?php echo get_template_directory_uri();?>/images/content/banner-left.jpg" alt="" class="w-md-100">
-                    <div class="over-image-card pos-right">
-                        <div class="over-image-card-icon"><i class="icon-card"></i></div>
-                        <div class="over-image-card-text">
-                            <h4>Pay Online</h4>
-                            <p>Online Payment for Patients. For your convenience MedLab now offers the ability to make a secure payment online.</p>
-                            <a href="form-payonline.html" class="btn btn-white btn-white--all"><i class="icon-right-arrow"></i><span>pay online</span><i class="icon-right-arrow"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="faq-wrap-bg">
-                    <div class="faq-wrap faq-wrap--pad-md">
-                        <h2 class="h1 bg-title">Questions</h2>
-                        <div class="nav nav-pills nav-pills--noborder" role="tablist">
-                            <a class="nav-link active" data-toggle="pill" href="#tab-A1" role="tab"><i class="icon-labinstrument"></i>General</a>
-                            <a class="nav-link" data-toggle="pill" href="#tab-B1" role="tab"><i class="icon-billing"></i>Billing Questions</a>
-                            <a class="nav-link" href="#" data-toggle="modal" data-target="#modalQuestionForm"><i class="icon-question"></i>Ask Question</a>
-                        </div>
-                        <div id="tab-content-2" class="tab-content mt-2">
-                            <div id="tab-A1" class="tab-pane fade show active" role="tabpanel">
-                                <div id="faqAccordion1" class="faq-accordion faq-accordion--style2" data-children=".faq-item">
-                                    <div class="faq-item">
-                                        <a data-toggle="collapse" data-parent="#faqAccordion1" href="#faqItem1" aria-expanded="true"><span>1.</span><span>How long does my eye exam take?</span></a>
-                                        <div id="faqItem1" class="collapse show faq-item-content" role="tabpanel">
-                                            <div>
-                                                <p>A typical eye exam take 1-1.5 hours because we do a comprehensive, dilated eye exam. This includes: dilation, tonometry (a measurement of eye pressure), visual field test (a measurement of peripheral vision) and visual acuity test (a measurement of distance vision).</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="faq-item">
-                                        <a data-toggle="collapse" data-parent="#faqAccordion1" href="#faqItem2" aria-expanded="false" class="collapsed"><span>2.</span><span>How affordable are your services?</span></a>
-                                        <div id="faqItem2" class="collapse faq-item-content" role="tabpanel">
-                                            <div>
-                                                <p>
-                                                    Everyone’s needs are different, so have a chat to your dentist about how often you need to have your teeth checked by them based on the condition of your mouth, teeth and gums. It’s recommended that children see their dentist at least once a year.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="faq-item">
-                                        <a data-toggle="collapse" data-parent="#faqAccordion1" href="#faqItem3" aria-expanded="false" class="collapsed"><span>3.</span><span>Where can I find out more about specific conditions?</span></a>
-                                        <div id="faqItem3" class="collapse faq-item-content" role="tabpanel">
-                                            <div>
-                                                <p>
-                                                    Everyone’s needs are different, so have a chat to your dentist about how often you need to have your teeth checked by them based on the condition of your mouth, teeth and gums. It’s recommended that children see their dentist at least once a year.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="faq-item">
-                                        <a data-toggle="collapse" data-parent="#faqAccordion1" href="#faqItem4" aria-expanded="false" class="collapsed"><span>4.</span><span>Which consultants work in the general ophthalmology service?</span></a>
-                                        <div id="faqItem4" class="collapse faq-item-content" role="tabpanel">
-                                            <div>
-                                                <p>
-                                                    Everyone’s needs are different, so have a chat to your dentist about how often you need to have your teeth checked by them based on the condition of your mouth, teeth and gums. It’s recommended that children see their dentist at least once a year.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="tab-B1" class="tab-pane fade" role="tabpanel">
-                                <div id="faqAccordion2" class="faq-accordion faq-accordion--style2" data-children=".faq-item">
-                                    <div class="faq-item">
-                                        <a data-toggle="collapse" data-parent="#faqAccordion2" href="#faqItem21" aria-expanded="true"><span>1.</span><span>How can I improve my oral hygiene?</span></a>
-                                        <div id="faqItem21" class="collapse show faq-item-content" role="tabpanel">
-                                            <div>
-                                                <p>
-                                                    Everyone’s needs are different, so have a chat to your dentist about how often you need to have your teeth checked by them based on the condition of your mouth, teeth and gums. It’s recommended that children see their dentist at least once a year.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="faq-item">
-                                        <a data-toggle="collapse" data-parent="#faqAccordion2" href="#faqItem22" aria-expanded="false" class="collapsed"><span>2.</span><span>How do I know if my teeth are healthy?</span></a>
-                                        <div id="faqItem22" class="collapse faq-item-content" role="tabpanel">
-                                            <div>
-                                                <p>
-                                                    Everyone’s needs are different, so have a chat to your dentist about how often you need to have your teeth checked by them based on the condition of your mouth, teeth and gums. It’s recommended that children see their dentist at least once a year.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="faq-item">
-                                        <a data-toggle="collapse" data-parent="#faqAccordion2" href="#faqItem23" aria-expanded="false" class="collapsed"><span>3.</span>Why are regular dental assessments so important?</a>
-                                        <div id="faqItem23" class="collapse faq-item-content" role="tabpanel">
-                                            <div>
-                                                <p>
-                                                    Everyone’s needs are different, so have a chat to your dentist about how often you need to have your teeth checked by them based on the condition of your mouth, teeth and gums. It’s recommended that children see their dentist at least once a year.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="faq-item">
-                                        <a data-toggle="collapse" data-parent="#faqAccordion2" href="#faqItem24" aria-expanded="false" class="collapsed"><span>4.</span><span>How often 1 should I visit my dentist?</span></a>
-                                        <div id="faqItem24" class="collapse faq-item-content" role="tabpanel">
-                                            <div>
-                                                <p>
-                                                    Everyone’s needs are different, so have a chat to your dentist about how often you need to have your teeth checked by them based on the condition of your mouth, teeth and gums. It’s recommended that children see their dentist at least once a year.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--//section faq-->
+
+
+
+<?php while ( have_rows('sections') ) : the_row();?>
+    <?php if( get_row_layout() == 'blog_section' ) :
+    $blog_group = get_sub_field('blog_group');
+    ?>
+
+    <?php 
+        $achievements = get_sub_field('achievements');
+        $heading = $achievements['heading'];
+        $image = $achievements['image'];
+        $counters = $achievements['counter'];
+     ?>
 
     <!--section news & achieved-->
     <div class="section">
         <div class="row no-gutters row-shift">
+            <?php if($blog_group): ?>
             <div class="col-lg-6 col-shift-right">
                 <div class="container-shift-left">
                     <div class="title-wrap">
-                        <h2 class="double-title double-title--white double-title--vcenter" data-title="News"><span>News & Events</span></h2>
+                        <h2 class="double-title double-title--white double-title--vcenter" data-title="<?php echo $blog_group['blog_heading'];?>">
+                            <span><?php echo $blog_group['blog_heading'];?></span>
+                        </h2>
                     </div>
                     <div class="blog-post-sm-vertical">
+
+
+                    <?php
+                     $blogs = $blog_group['blogs'];
+                        $blog = new WP_Query(array(
+                            'post_type' => 'post',
+                            'cat' => $blogs,
+                            'posts_per_page' => 3,
+                            'order' => 'DESC'
+                        ));
+                        ?>
+                        <?php
+                        while ($blog->have_posts()) : $blog->the_post(); ?>
+                        
                         <div class="blog-post-sm">
-                            <div class="blog-post-sm-photo"><img src="<?php echo get_template_directory_uri();?>/images/content/news-01.jpg" alt="" class="img-fluid"></div>
+                            <div class="blog-post-sm-photo">
+                                <?php 
+                                    if ( has_post_thumbnail() ) { ?>
+                                       <img src="<?php echo wp_get_attachment_url( get_post_thumbnail_id($post->ID), 'full' ); ?>" class="img-fluid" alt="<?php echo get_the_title(); ?>">
+                                    <?php }
+                                    else { ?>
+                                        <img src="<?=site_url();?>/wp-content/uploads/2021/12/no-preview.png" class="img-fluid" alt="noprivew" >
+                                    <?php }
+                                    ?>
+                            </div>
                             <div class="blog-post-sm-text">
-                                <div class="blog-post-sm-date">Mar 16, 2020</div>
-                                <div class="blog-post-sm-title"><a href="blog-post-page.html">Biochemical Receptor Reverses Bone Degradation Caused by Osteoporosis</a></div>
-                                <a href="blog-post-page.html" class="blog-post-sm-readmore">...</a>
+                                <div class="blog-post-sm-date"><?php echo get_the_date( 'M d, Y', $post->ID ); ?></div>
+                                <div class="blog-post-sm-title">
+                                    <a href="<?php the_permalink(); ?>">
+                                        <?php 
+                                        $title = get_the_title();
+                                        $trim_title = wp_trim_words($title, 20, "");
+                                        echo $trim_title;?>
+                                    </a>
+                                </div>
+                                <a href="<?php the_permalink(); ?>" class="blog-post-sm-readmore">...</a>
                             </div>
                         </div>
-                        <div class="blog-post-sm">
-                            <div class="blog-post-sm-photo"><img src="<?php echo get_template_directory_uri();?>/images/content/news-02.jpg" alt="" class="img-fluid"></div>
-                            <div class="blog-post-sm-text">
-                                <div class="blog-post-sm-date">Mar 28, 2020</div>
-                                <div class="blog-post-sm-title"><a href="blog-post-page.html">Ammonia Fuel Cell is More Powerful, Cost-Effective Than Hydrogen</a></div>
-                                <a href="blog-post-page.html" class="blog-post-sm-readmore">...</a>
-                            </div>
-                        </div>
-                        <div class="blog-post-sm">
-                            <div class="blog-post-sm-photo"><img src="<?php echo get_template_directory_uri();?>/images/content/news-03.jpg" alt="" class="img-fluid"></div>
-                            <div class="blog-post-sm-text">
-                                <div class="blog-post-sm-date">Apr 16, 2020</div>
-                                <div class="blog-post-sm-title"><a href="blog-post-page.html">Nanopore Optofluidic Device Controls Delivery of Individual Biomolecules</a></div>
-                                <a href="blog-post-page.html" class="blog-post-sm-readmore">...</a>
-                            </div>
-                        </div>
+
+                        <?php endwhile; wp_reset_postdata(); ?>
+
+                        
+
+
                     </div>
-                    <div class="blog-post-sm-carousel js-blog-grid-carousel-full">
-                        <div class="blog-post-sm">
-                            <div class="blog-post-sm-photo"><img src="<?php echo get_template_directory_uri();?>/images/content/news-01.jpg" alt="" class="img-fluid"></div>
-                            <div class="blog-post-sm-text">
-                                <div class="blog-post-sm-date">Mar 16, 2020</div>
-                                <div class="blog-post-sm-title"><a href="blog-post-page.html">Biochemical Receptor Reverses Bone Degradation Caused by Osteoporosis</a></div>
-                                <a href="blog-post-page.html" class="blog-post-sm-readmore">...</a>
-                            </div>
-                        </div>
-                        <div class="blog-post-sm">
-                            <div class="blog-post-sm-photo"><img src="<?php echo get_template_directory_uri();?>/images/content/news-02.jpg" alt="" class="img-fluid"></div>
-                            <div class="blog-post-sm-text">
-                                <div class="blog-post-sm-date">Mar 28, 2020</div>
-                                <div class="blog-post-sm-title"><a href="blog-post-page.html">Ammonia Fuel Cell is More Powerful, Cost-Effective Than Hydrogen</a></div>
-                                <a href="blog-post-page.html" class="blog-post-sm-readmore">...</a>
-                            </div>
-                        </div>
-                        <div class="blog-post-sm">
-                            <div class="blog-post-sm-photo"><img src="<?php echo get_template_directory_uri();?>/images/content/news-03.jpg" alt="" class="img-fluid"></div>
-                            <div class="blog-post-sm-text">
-                                <div class="blog-post-sm-date">Apr 16, 2020</div>
-                                <div class="blog-post-sm-title"><a href="blog-post-page.html">Nanopore Optofluidic Device Controls Delivery of Individual Biomolecules</a></div>
-                                <a href="blog-post-page.html" class="blog-post-sm-readmore">...</a>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
+            <?php endif; ?>
+
+            <?php if($achievements): ?>
             <div class="col-lg-6 col-shift-left mt-4 mt-md-5 mt-lg-2">
+                <?php if($heading): ?>
                 <div class="container-shift-right">
                     <div class="title-wrap text-center text-md-left">
-                        <h2 class="h1">Our <span class="theme-color">Achievements</span></h2>
+                        <h2 class="h1">
+                            <?php echo $heading;?>
+                        </h2>
                     </div>
                 </div>
+                <?php endif; ?>
+
                 <div class="mt-2 mt-md-3 mt-lg-4">
-                    <img src="<?php echo get_template_directory_uri();?>/images/content/banner-right.jpg" alt="" class="w-sm-100">
+                    <?php if(!empty($image)){ ?>
+                        <img src="<?php echo $image;?>" alt="Image" class="w-sm-100">
+                    <?php } else{ ?>
+                        <img src="<?php echo get_template_directory_uri();?>/images/content/banner-right.jpg" alt="Image" class="w-sm-100">
+                    <?php } ?>
+                    
+
+                    <?php 
+                    if( $counters ) { ?>
                     <div class="over-image-counter pos-left">
                         <div class="d-flex w-100 justify-content-between">
+                            <?php 
+                            foreach( $counters as $counter ) { ?>
                             <div class="counter-box-sm">
-                                <div class="counter-box-sm-number"><span class="count" data-to="150" data-speed="1500">0</span><span class="sup">K</span></div>
-                                <div class="counter-box-sm-text">Tests Performed</div>
+                                <div class="counter-box-sm-number">
+                                    <span class="count" data-to="<?php echo $counter['number'];?>" data-speed="1500">0</span>
+                                    <span class="sup"><?php echo $counter['affix'];?></span>
+                                </div>
+                                <div class="counter-box-sm-text"><?php echo $counter['text'];?></div>
                             </div>
-                            <div class="counter-box-sm">
-                                <div class="counter-box-sm-number"><span class="count" data-to="50" data-speed="1500">0</span><span class="sup">+</span></div>
-                                <div class="counter-box-sm-text">Permanent Staff</div>
-                            </div>
-                            <div class="counter-box-sm">
-                                <div class="counter-box-sm-number"><span class="count" data-to="250" data-speed="1500">0</span><span class="sup">+</span></div>
-                                <div class="counter-box-sm-text">Suppliers</div>
-                            </div>
+                            <?php } ?>
+
                         </div>
                     </div>
+                <?php } ?>
+
                 </div>
             </div>
+            <?php endif; ?>
         </div>
     </div>
     <!--//section news & achieved-->
+
+    <?php endif; ?>
+<?php endwhile; ?>
+
+
+<?php while ( have_rows('sections') ) : the_row();?>
+    <?php if( get_row_layout() == 'inquiry_section' ) :
+    $form_section = get_sub_field('form_section');
+    $form_image = get_sub_field('image');
+    
+    ?>
     <!--section contact-->
     <div class="section bg-norepeat bg-bottom bg-left bg-md-none bg-fixed section-bottom-padding-half section-top-padding" style="background-image: url(<?php echo get_template_directory_uri();?>/images/bg-bottom-left2.png)">
         <div class="banner-appointment-form">
             <div class="container">
                 <div class="row no-gutters">
+                    <?php if (!empty($form_image)) { ?>
+                        <div class="col-sm-5 col-lg-5 order-2 order-sm-2 mt-3 mt-md-0 text-center">
+                            <img src="<?php echo $form_image;?>" alt="" class="banner-appointment-form-image">
+                        </div>
+                    <?php } else{?>
                     <div class="col-sm-5 col-lg-5 order-2 order-sm-2 mt-3 mt-md-0 text-center">
                         <img src="<?php echo get_template_directory_uri();?>/images/content/banner-appointment.png" alt="" class="banner-appointment-form-image">
                     </div>
+                    <?php } ?>
                     <div class="col-sm-7 col-lg-7 order-1 order-sm-1 d-flex">
                         <div class="pt-2 pt-lg-6 px-lg-3 text-center">
+                            <?php if (!empty($form_section['heading'])) { ?>
                             <div class="title-wrap-alt">
-                                <h2 class="double-title double-title--vcenter double-title--center" data-title="Appointment"><span>Make an <span class="theme-color">Appointment</span></span></h2>
+                                <h2 class="double-title double-title--vcenter double-title--center" data-title="<?php echo strip_tags($form_section['heading']);?>">
+                                    <span><?php echo $form_section['heading'];?> </span>
                             </div>
-                            <p>We believe in providing the best possible care to all our existing patients and welcome
-                                new patients to sample.</p>
-                            <!-- <form class="contact-form" id="contactForm" method="post" novalidate="novalidate"> -->
+                            <?php } ?>
+                            <?php if (!empty($form_section['sub_heading'])) { ?>
+                            <p><?php echo $form_section['sub_heading'];?></p>
+                            <?php } ?>
+
+                            <?php if (!empty($form_section['form_code'])) {
+                                echo do_shortcode('[contact-form-7 id="'.$form_section['form_code'].'" title="Inquiry Form" html_class="contact-form"]');
+                            }?>
                                 
-                                <!-- <div>
-                                    <input type="text" class="form-control" name="name" placeholder="Your name*">
-                                </div>
-                                <div class="row row-sm-space mt-15">
-                                    <div class="col-sm-6"><input type="text" class="form-control" name="phone" placeholder="Your Phone"></div>
-                                    <div class="col-sm-6 mt-15 mt-sm-0"><input type="text" class="form-control" name="email" placeholder="Email*"></div>
-                                </div>
-                                <div class="mt-15">
-                                    <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                                </div> 
-                                <div class="mt-2 mt-lg-4">
-                                    <button type="submit" class="btn"><i class="icon-right-arrow"></i><span>Send request</span><i class="icon-right-arrow"></i></button>
-                                </div>-->
-                                <?php echo do_shortcode('[contact-form-7 id="200" title="Inquiry Form" html_class="contact-form"]');?>
-                                
-                            <!-- </form> -->
                         </div>
                     </div>
                 </div>
@@ -558,6 +423,9 @@ get_header();
         </div>
     </div>
     <!--//section contact-->
+
+    <?php endif; ?>
+<?php endwhile; ?>
 </div>
 
 

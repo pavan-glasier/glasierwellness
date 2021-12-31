@@ -35,12 +35,7 @@
 						<?php endif; ?>
 
 						<div class="mt-2 mt-lg-0"></div>
-						<!-- <div class="footer-social d-none d-md-block d-lg-none">
-							<a href="https://www.facebook.com/" target="blank" class="hovicon"><i class="icon-facebook-logo"></i></a>
-							<a href="https://www.twitter.com/" target="blank" class="hovicon"><i class="icon-twitter-logo"></i></a>
-							<a href="https://plus.google.com/" target="blank" class="hovicon"><i class="icon-google-logo"></i></a>
-							<a href="https://www.instagram.com/" target="blank" class="hovicon"><i class="icon-instagram"></i></a>
-						</div> -->
+						
 					</div>
 					<div class="col-md">
 						<div class="footer-text mt-1 mt-lg-1">
@@ -311,7 +306,7 @@
 <script src="<?php echo get_template_directory_uri();?>/js/app.js"></script>
 <script src="<?php echo get_template_directory_uri();?>/color/color.js"></script>
 <script src="<?php echo get_template_directory_uri();?>/js/app-shop.js"></script>
-<script src="<?php echo get_template_directory_uri();?>/form/forms.js"></script>
+<!-- <script src="<?php echo get_template_directory_uri();?>/form/forms.js"></script> -->
 
 
 
@@ -389,9 +384,13 @@ $(document).ready(function(){
 		$("#btnDis").attr("disabled", true);
 	}
   $("#qty").on('keyup', function(){
+
 	var val1 = parseInt($(this).attr("min"));
     var val2 = parseInt($(this).val());
-
+    if($(this).val() == ""){
+		$("#msg").html("please enter a number");
+		$("#btnDis").attr("disabled", true);
+	}
 	if( val1 > val2){
 		$("#msg").html("please enter a number greater than "+(val1-1));
 		$("#btnDis").attr("disabled", true);
@@ -401,6 +400,7 @@ $(document).ready(function(){
 		$("#btnDis").attr("disabled", false);
 		
 	}
+	
   });
 });
 </script>
@@ -416,7 +416,6 @@ function ajaxSubmit(postID) {
 			jQuery('#productName').val(Obj.name);
 			jQuery("#productImg").val(Obj.imgUrl);
             // setTimeout(closePop, 3000);
-
          }
     });
 
@@ -441,14 +440,85 @@ function ajaxSubmit(postID) {
     }
 </script>
 
-<script>
-// $("#btnfile").click(function () {
-//     alert($("#productImg").val());
-// });
+<script type="text/javascript">
+$(document).ready(function(){
+  loadTable();
+});
+
+
+
+
+function loadTable(){ 
+    $("#load-table").html("");
+    $.ajax({ 
+      url : 'http://192.168.0.128/php-rest-api/glasierwellness-api-fetch.php',
+      type : "GET",
+      success : function(data){
+        if(data.status == false){
+          $("#load-table").append("<tr><td colspan='6'><h2>"+ data.message +"</h2></td></tr>");
+        }else{
+          $.each(data, function(key, value){ 
+            $("#load-table").append(
+            	"<tr>" + 
+                "<td>" + value.id + "</td>" + 
+                "<td>" + value.product_name +"</td>" + 
+                "<td>" + value.requirement +"</td>" + 
+                "<td>" + value.units +"</td>" +
+                "<td>" + value.remark +"</td>" + 
+                "<td>" + value.party_name +"</td>" + 
+                "<td>" + value.company_name +"</td>" +
+                "<td>" + value.phone +"</td>" + 
+                "<td>" + value.email +"</td>" + 
+                "<td>" + value.location +"</td>" +
+                "<td>" + value.country +"</td>" + 
+                "<td>" + value.state +"</td>" + 
+                "<td>" + value.city +"</td>" +
+                "<td>" + value.datetime +"</td>" +
+                "<td><button class='delete-btn' data-id='"+ value.id + "'><i class='fa fa-close'></i></button></td>" +
+                "</tr>"
+                );
+          });
+        }
+      }
+    });
+  }
+
+
+
+
+  //Delete Record
+  $(document).on("click",".delete-btn",function(){
+    if(confirm("Do you really want to delete this record ? ")){
+      var studentId = $(this).data("id");
+      var obj = {id : studentId};
+      var myJSON = JSON.stringify(obj);
+      var row = this;
+
+      $.ajax({
+      url : 'http://192.168.0.128/php-rest-api/glasierwellness-api-delete.php',
+      type : "POST",
+      data : myJSON,
+      success : function(data){
+        // message(data.message, data.status);
+        if(data.status == true){
+          $(row).closest("tr").fadeOut();
+        }
+      }
+    });
+    }
+  });
+
 </script>
 
+<script>
 
-
+document.addEventListener( 'wpcf7mailsent', function( event ) {
+   
+   if (event.detail.contactFormId == "252") {
+	   loadTable();
+   }
+}, false );
+</script>
 <?php wp_footer(); ?>
 
 </body>
