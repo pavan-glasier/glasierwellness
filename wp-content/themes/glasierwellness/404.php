@@ -12,8 +12,6 @@
 
 get_header();
 ?>
-<?php //get_search_form(); 
-?>
 
 <div class="page-content">
 	<!--section-->
@@ -44,17 +42,10 @@ get_header();
 					<i class="icon-right-arrow"></i>
 				</a>
 			</div>
-
 		</div>
 	</div>
 	<!--//section-->
 </div>
-
-
-
-
-
-
 
 <?php
 get_footer();

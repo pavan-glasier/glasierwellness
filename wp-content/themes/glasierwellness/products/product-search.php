@@ -6,12 +6,11 @@
  * 
  **/
 
-get_header();
-?>
+get_header(); ?>
 <?php
 $search = $_POST['search'];
 $title = $_POST['title'];
-// echo $search;
+
 ?>
 <div class="page-content">
     <!--section-->
@@ -28,9 +27,7 @@ $title = $_POST['title'];
     <!--//section-->
     <!--section-->
     <div class="section page-content-first">
-
         <div class="container mt-3 mb-lg-5 mt-lg-5">
-
             <?php
             $the_query = new WP_Query(
                 array(
@@ -73,8 +70,6 @@ $title = $_POST['title'];
                 </div>
             <?php } else { ?>
 
-
-
                 <?php if ($the_query->have_posts()) : ?>
                     <div class="row">
                         <div class="col-md-12 col-lg-12">
@@ -105,9 +100,7 @@ $title = $_POST['title'];
                             <i class="icon-right-arrow"></i>
                         </a>
                     </div>
-            <?php endif;
-            }
-            ?>
+            <?php endif; } ?>
 
         </div>
     </div>

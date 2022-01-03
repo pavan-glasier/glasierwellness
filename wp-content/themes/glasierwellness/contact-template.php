@@ -7,9 +7,6 @@
 
 get_header();
  ?>
-
-
-
 <div class="page-content">
 		<!--section-->
         <div class="section mt-0" >

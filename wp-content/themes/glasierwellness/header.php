@@ -10,7 +10,6 @@
  * @subpackage glasier_wellness
  * @since Glasier Wellness 1.0
  */
-
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?> <?php glasierwellness_the_html_classes(); ?>>

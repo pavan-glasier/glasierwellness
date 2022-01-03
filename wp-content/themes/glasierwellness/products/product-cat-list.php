@@ -1,6 +1,3 @@
-
-
-
 <?php
     $category = get_queried_object();
     $cat_ID = $category->term_id;
@@ -19,7 +16,6 @@
                 if (!empty($terms) && !is_wp_error($terms)) {
                     $count = count($terms);
                     $i = 0;
-                    // $term_list = '<p class="my_term-archive"></p>';
                     foreach ($terms as $term) {
                         $i++;
                         if($cat_name == $term->name){

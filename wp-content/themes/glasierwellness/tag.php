@@ -41,7 +41,6 @@ get_header(); ?>
 		</div>
 		<div class="container">
 			<div class="row blog-isotope">
-
                 <?php
                 while ( have_posts() ) :
 					the_post();

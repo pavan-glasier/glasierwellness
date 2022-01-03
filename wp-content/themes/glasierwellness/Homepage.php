@@ -47,12 +47,9 @@ get_header();
                     </column>
                 </div>
             </div>
-            
 
-            
             <div class="main-slider mb-0 arrows-white arrows-bottom" id="mainSlider" data-slick='{"arrows": false, "dots": true}'>
 
-                
                 <?php
                 if( have_rows('slides', 'option') ):
                     while( have_rows('slides', 'option') ) : the_row();
@@ -103,16 +100,12 @@ get_header();
 
 
 
-
-
-
-
 <?php while ( have_rows('sections') ) : the_row();?>
     <?php if( get_row_layout() == 'tab_section' ) :
 
     $tab_section_heading = get_sub_field('tab_section_heading');
     ?>
-    <!--section-->
+    <!--section tabs-->
     <div class="section bg-grey mt-md-0">
         <div class="container">
             <div class="title-wrap text-center">
@@ -122,8 +115,6 @@ get_header();
                 <div class="h-decor"></div>
             </div>
             <div class="nav nav-pills-icons js-nav-pills-carousel" role="tablist">
-
-
                 <?php 
                   
                   if( have_rows('tabs') ):
@@ -146,7 +137,6 @@ get_header();
                      ?>
             </div>
             <div id="tab-content" class="tab-content mt-2 mt-sm-4">
-
                 <?php 
                   
                      if( have_rows('tabs') ):
@@ -156,9 +146,7 @@ get_header();
                      $tabs_name = get_sub_field('tabs_name');
                      $tab_name = $tabs_name['name'];
 
-                     $tab_contents = get_sub_field('tab_contents');
-
-                           ?>
+                     $tab_contents = get_sub_field('tab_contents'); ?>
                 <div class="tab-pane fade <?php if ($j==0) { ?>show active<?php } ?>" id="tab<?php echo $j++;?>"  role="tabpanel">
                     <div class="tab-bg">
                         <img src="<?php echo get_template_directory_uri();?>/images/content/bg-map.png" alt="">
@@ -173,26 +161,18 @@ get_header();
                         </div>
                     </div>
                 </div>
-                    <?php 
-                        endwhile;
-                     else :
-                     endif;
-                        ?>
-
-                
+                <?php 
+                    endwhile;
+                 else :
+                 endif;
+                    ?>                
             </div>
 
         </div>
     </div>
-    <!--//section-->
+    <!--//section tabs-->
     <?php endif; ?>
 <?php endwhile; ?>
-
-
-
-
-
-
 
 
     <!--section services -->
@@ -297,13 +277,13 @@ get_header();
                         <div class="blog-post-sm">
                             <div class="blog-post-sm-photo">
                                 <?php 
-                                    if ( has_post_thumbnail() ) { ?>
-                                       <img src="<?php echo wp_get_attachment_url( get_post_thumbnail_id($post->ID), 'full' ); ?>" class="img-fluid" alt="<?php echo get_the_title(); ?>">
-                                    <?php }
-                                    else { ?>
-                                        <img src="<?=site_url();?>/wp-content/uploads/2021/12/no-preview.png" class="img-fluid" alt="noprivew" >
-                                    <?php }
-                                    ?>
+                                if ( has_post_thumbnail() ) { ?>
+                                   <img src="<?php echo wp_get_attachment_url( get_post_thumbnail_id($post->ID), 'full' ); ?>" class="img-fluid" alt="<?php echo get_the_title(); ?>">
+                                <?php }
+                                else { ?>
+                                    <img src="<?=site_url();?>/wp-content/uploads/2021/12/no-preview.png" class="img-fluid" alt="noprivew" >
+                                <?php }
+                                ?>
                             </div>
                             <div class="blog-post-sm-text">
                                 <div class="blog-post-sm-date"><?php echo get_the_date( 'M d, Y', $post->ID ); ?></div>
@@ -318,11 +298,7 @@ get_header();
                                 <a href="<?php the_permalink(); ?>" class="blog-post-sm-readmore">...</a>
                             </div>
                         </div>
-
                         <?php endwhile; wp_reset_postdata(); ?>
-
-                        
-
 
                     </div>
 
@@ -348,7 +324,6 @@ get_header();
                     <?php } else{ ?>
                         <img src="<?php echo get_template_directory_uri();?>/images/content/banner-right.jpg" alt="Image" class="w-sm-100">
                     <?php } ?>
-                    
 
                     <?php 
                     if( $counters ) { ?>
@@ -427,7 +402,6 @@ get_header();
     <?php endif; ?>
 <?php endwhile; ?>
 </div>
-
 
  <?php  
 

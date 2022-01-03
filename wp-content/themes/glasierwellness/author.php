@@ -11,7 +11,6 @@
  * @subpackage highen
  * @since Highen 1.0
  */
-
 get_header(); ?>
 
 <div class="page-content">
@@ -20,8 +19,6 @@ get_header(); ?>
 		<?php the_post(); ?>
 
 		<?php rewind_posts(); ?>
-
-
 
 		<!--section-->
 		<div class="section mt-0">

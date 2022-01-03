@@ -11,16 +11,10 @@
  */
 
 get_header();
-
 ?>
-
 <?php if ($post->post_type == 'products') { ?>
-
 	<?php get_template_part('products/category-page'); ?>
-
 <?php } else { ?>
-
-
 	<div class="page-content">
 		<?php if (have_posts()) : ?>
 			<!--section-->
@@ -76,16 +70,9 @@ get_header();
 		<?php else : ?>
 			<?php get_template_part('content', 'none'); ?>
 		<?php endif; ?>
-
 	</div>
 	<!--//section-->
 
 <?php } ?>
-
-
-
-
-
-
 
 <?php get_footer(); ?>

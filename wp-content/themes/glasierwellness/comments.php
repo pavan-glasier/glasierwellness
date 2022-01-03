@@ -23,9 +23,7 @@ if ( post_password_required() ) {
 
 $glasier_wellness_comment_count = get_comments_number();
 ?>
-
 <div id="comments" class="comments-area default-max-width <?php echo get_option( 'show_avatars' ) ? 'show-avatars' : ''; ?>">
-
 	<?php
 	if ( have_comments() ) :
 		;

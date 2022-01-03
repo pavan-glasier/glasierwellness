@@ -13,8 +13,6 @@ $wrapper_classes .= has_custom_logo() ? ' has-logo' : '';
 $wrapper_classes .= (true === get_theme_mod('display_title_and_tagline', true)) ? ' has-title-and-tagline' : '';
 $wrapper_classes .= has_nav_menu('primary') ? ' has-menu' : '';
 ?>
-<?php //echo esc_attr( $wrapper_classes ); 
-?>
 
 <header class="header ">
     <div class="header-quickLinks js-header-quickLinks d-lg-none">

@@ -15,7 +15,6 @@
         <a class="btn" href="<?php the_permalink(); ?>">
             <i class="icon-right-arrow"></i>Details<i class="icon-right-arrow"></i>
         </a>
-        <!-- <button class="btn" onclick="openProductDetail(<?php echo $post->ID;?>)"><i class="icon-right-arrow"></i>Get Best Quote<i class="icon-right-arrow"></i></button> -->
     </div>
 </div>
 

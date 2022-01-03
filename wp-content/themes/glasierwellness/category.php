@@ -36,7 +36,6 @@ get_header(); ?>
 		</div>
 		<div class="container">
 			<div class="row blog-isotope">
-
                 <?php
                 while ( have_posts() ) :
 					the_post();
@@ -49,11 +48,9 @@ get_header(); ?>
 			<?php glasierwellness_pagination(); ?>
 		</div>
 	</div>
-   	
 		<?php else : ?>
 			<?php get_template_part( 'content', 'none' ); ?>
 		<?php endif; ?>
-
 </div>
 <!--//section-->
 

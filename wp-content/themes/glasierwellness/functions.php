@@ -719,38 +719,6 @@ function myscript_css()
 add_action('wp_head', 'myscript_css', 1);
 
 
-function foot_theme_scripts()
-{
-
-	//   wp_enqueue_script( 'js', get_template_directory_uri() . '/vendor/jquery/jquery-3.2.1.min.js');
-	//   wp_enqueue_script( 'migrate', get_template_directory_uri() . '/vendor/jquery-migrate/jquery-migrate-3.0.1.min.js');
-	//   wp_enqueue_script( 'jquery-cookie', get_template_directory_uri() . '/vendor/cookie/jquery.cookie.js');
-	//   wp_enqueue_script( 'js-moment', get_template_directory_uri() . '/vendor/bootstrap-datetimepicker/moment.js');
-	//   wp_enqueue_script( 'bootstrap-datetimepicker-min', get_template_directory_uri() . '/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js');
-	//   wp_enqueue_script( 'popper-min', get_template_directory_uri() . '/vendor/popper/popper.min.js');
-	//   wp_enqueue_script( 'bootstrap-min', get_template_directory_uri() . '/vendor/bootstrap/bootstrap.min.js');
-	//   wp_enqueue_script( 'waypoints-min', get_template_directory_uri() . '/vendor/waypoints/jquery.waypoints.min.js');
-	//   wp_enqueue_script( 'sticky-min', get_template_directory_uri() . '/vendor/waypoints/sticky.min.js');
-	//   wp_enqueue_script( 'imagesloaded-pkgd-min', get_template_directory_uri() . '/vendor/imagesloaded/imagesloaded.pkgd.min.js');
-	//   wp_enqueue_script( 'slick-min', get_template_directory_uri() . '/vendor/slick/slick.min.js');
-	//   wp_enqueue_script( 'scroll-with-ease-min', get_template_directory_uri() . '/vendor/scroll-with-ease/jquery.scroll-with-ease.min.js');
-	//   wp_enqueue_script( 'jquery-countTo', get_template_directory_uri() . '/vendor/countTo/jquery.countTo.js');
-	//   wp_enqueue_script( 'form', get_template_directory_uri() . '/vendor/form-validation/jquery.form.js');
-	//   wp_enqueue_script( 'jquery-validate-min', get_template_directory_uri() . '/vendor/form-validation/jquery.validate.min.js');
-	//   wp_enqueue_script( 'isotope-pkgd-min', get_template_directory_uri() . '/vendor/isotope/isotope.pkgd.min.js');
-
-	//   wp_enqueue_script( 'app', get_template_directory_uri() . '/js/app.js');
-	//   wp_enqueue_script( 'color-color', get_template_directory_uri() . '/color/color.js');
-	//   wp_enqueue_script( 'app-shop', get_template_directory_uri() . '/js/app-shop.js');
-	//   wp_enqueue_script( 'forms', get_template_directory_uri() . '/form/forms.js');
-
-
-}
-
-
-
-add_action('wp_footer', 'foot_theme_scripts');
-
 
 
 
@@ -798,8 +766,6 @@ function load_products_by_ajax_callback()
 				</div>
 			</div>
 
-
-
 		<?php endwhile; ?>
 	<?php
 	endif;
@@ -808,8 +774,6 @@ function load_products_by_ajax_callback()
 }
 
 // END PRODUCT PAGE LOAD MORE
-
-
 
 
 // START CATEGORY PAGE LOAD MORE
@@ -835,14 +799,10 @@ function load_catproducts_by_ajax_callback()
 			),
 		),
 	);
-	$catProducts = new WP_Query($catArgs);
-?>
-
-
+	$catProducts = new WP_Query($catArgs); ?>
 	<?php if ($catProducts->have_posts()) : ?>
 		<?php while ($catProducts->have_posts()) : $catProducts->the_post();
 		 ?>
-
 			<div class="prd">
 				<div class="prd-img">
 					<a href="<?php the_permalink(); ?>">
@@ -863,8 +823,6 @@ function load_catproducts_by_ajax_callback()
 				</div>
 			</div>
 
-
-
 		<?php endwhile; ?>
 	<?php
 	endif;
@@ -873,10 +831,6 @@ function load_catproducts_by_ajax_callback()
 }
 
 // END LOAD MORE
-
-
-
-
 
 
 // Register Nav Walker class_alias
@@ -906,7 +860,6 @@ if (function_exists('acf_add_options_page')) {
 		'parent_slug'	=> 'theme-general-settings',
 	));
 
-
 	$slider   = array(
 		'page_title' 	=> __('Sliders Settings', 'glasierwellness'),
 		'menu_title'	=> __('Sliders', 'glasierwellness'),
@@ -923,10 +876,6 @@ if (function_exists('acf_add_options_page')) {
 		'parent_slug'	=> 'sliders-settings',
 	));
 }
-
-
-
-
 
 
 remove_action('wpcf7_init', 'wpcf7_add_form_tag_submit');
@@ -961,9 +910,6 @@ function new_wpcf7_submit_button_shortcode_handler($tag)
 	$html = sprintf('<button %1$s><span><i class="icon-black-envelope"></i></span></button>', $atts, $value);
 	return $html;
 }
-
-
-
 
 
 
@@ -1036,11 +982,7 @@ function query_post_type($query)
 add_filter('pre_get_posts', 'query_post_type');
 
 
-
-
-
-
-
+//  Custom post type pagination function For Blogs
 function glasierwellness_pagination()
 {
 
@@ -1065,187 +1007,7 @@ function glasierwellness_pagination()
 }
 
 
-
-
-
-
-
-
-// AJAX CALL
-
-
-function contactUs()
-{
-
-	// global $wpdb;
-
-	$postID = $_POST['postID'];
-
-	echo $postID;
-	die();
-}
-add_action('wp_ajax_contactUs', 'contactUs');
-add_action('wp_ajax_nopriv_contactUs', 'contactUs');
-
-
-
-
-
-// the ajax function
-add_action('wp_ajax_s_data_fetch', 's_data_fetch');
-add_action('wp_ajax_nopriv_s_data_fetch', 's_data_fetch');
-function s_data_fetch()
-{
-
-	$the_query = new WP_Query(
-		array(
-			'posts_per_page' => 1,
-			'p' => $_POST['postID'],
-			'post_type' => 'products'
-		)
-	);
-	?>
-	<?php
-	if ($the_query->have_posts()) :
-		while ($the_query->have_posts()) : $the_query->the_post(); ?>
-
-			<?php
-			echo json_encode(array(
-				'name' => get_the_title(),
-				'imgUrl' => esc_url(wp_get_attachment_url(get_post_thumbnail_id($_POST['postID']), 'full')),
-			));
-			?>
-
-<?php endwhile;
-		wp_reset_postdata();
-	else :
-		echo '<span>No Results Found !</span>';
-	endif;
-	die();
-}
-
-
-
-
-
-
-// API SUBMIT DATA
-function on_submit( $form ) {
-    if ( $form->id === 326) {
-	    $submission = WPCF7_Submission::get_instance();
-	    $data = $submission->get_posted_data();
-
-	    $name = sanitize_text_field($data['sname']);
-	    $age = sanitize_text_field($data['sage']);
-	    $city = sanitize_text_field($data['scity']);
-	    
-	    $url = 'http://192.168.0.128/php-rest-api/api-insert.php';
-
-	    $response = wp_safe_remote_post($url, [
-	        'body' => json_encode([
-	            'sname' => $name,
-	            'sage' => $age,
-	            'scity' => $city,
-	        ]),
-	    ]);
-
-	    if ( is_wp_error($response) ) {
-	        // $abort = TRUE;
-
-	        $body = wp_remote_retrieve_body($response);
-	        $result = json_decode($body);
-	        $msg = $result->message;
-	        $submission->set_response($result->message);
-	        $submission->set_status($result->status);
-	        error_log(print_r($msg, true));
-	    }
-	}
-}
-
-add_action('wpcf7_mail_sent', 'on_submit', 10, 3);
-
-// function action_wpcf7_mail_sent( $contact_form ) {
-
-
-//       if ( $contact_form->id === 326) {
-//         $submission = WPCF7_Submission::get_instance();
-//         if ( $submission ) {
-//             $posted_data = $submission->get_posted_data();
-
-            
-
-//             $name = $posted_data['student_name'];
-//             $email = $posted_data['age'];
-//             $phone = $posted_data['city'];
-
-
-//             $url = 'http://localhost/php-rest-api/api-insert.php';
-//             $args = array(
-//             		'method' => 'POST',
-//             		'headers' => array(
-//             			'Accept' => 'application/json',
-// 	                    'Content-Type' => 'application/json'
-//                 	),
-//                 	'body' => array(
-// 	                    'name' => $posted_data['student_name'],
-// 	                    'age' => $posted_data['age'],
-// 	                    'city' => $posted_data['city']
-//                 	)
-//             );
-            
-
-//              $apiResponse = wp_remote_post( $url, $args );
-             
-//              $apiBody = json_decode( wp_remote_retrieve_body( $apiResponse ) );
-//              error_log(print_r($apiResponse, true));
-//             retrun;
-//         }
-//      }
-// }
-// // add the action 
-// add_action( 'wpcf7_mail_sent', 'action_wpcf7_mail_sent', 10, 1 );
-
-
-
-
-
-// $apiUrl = 'http://localhost/php-rest-api/api-fetch-all.php';
-// $response = wp_remote_get($apiUrl);
-// $responseBody = wp_remote_retrieve_body( $response );
-// $result = json_decode( $responseBody );
-// if ( is_array( $result ) && ! is_wp_error( $result ) ) {
-//     // print_r($result);
-//     foreach ($result as $key) {
-//     	echo $key->id;
-//     }
-// } else {
-//     echo "error";
-// }
-
-
-// function getValue($data){
-
-// $data = array(
-// 	'name' => $_POST['product_name'],
-// 	'qty' => $_POST['quantity']
-// );
-// return $data;
-// }
-
-// add_filter( 'wpcf7_form_elements', function( $form ) {
-//   $form = str_replace( 
-//   	'ProductName',
-//   	$_POST['product_name'],
-//   	$form 
-//   );
-//   $form = str_replace( 
-//   	'Units',
-//   	$_POST['quantity'],
-//   	$form 
-//   );
-//   return $form;
-// } );
-
+// replace_content CF7 fields
 
 function replace_content($content)
     {
@@ -1256,13 +1018,7 @@ function replace_content($content)
   add_filter('wpcf7_form_elements','replace_content');
 
 
-
-
-
-
-
-
-  // API SUBMIT DATA
+  // API SUBMIT DATA PRODUCT INQUIRY FORM
 function on_submitInq( $form ) {
     if ( $form->id === 252) {
 	    $submission = WPCF7_Submission::get_instance();
@@ -1301,14 +1057,12 @@ function on_submitInq( $form ) {
 	    ]);
 
 	    if ( is_wp_error($response) ) {
-	        // $abort = TRUE;
-
+	    	
 	        $body = wp_remote_retrieve_body($response);
 	        $result = json_decode($body);
 	        $msg = $result->message;
 	        $submission->set_response($result->message);
 	        $submission->set_status($result->status);
-	        
 	    }
 	}
 }

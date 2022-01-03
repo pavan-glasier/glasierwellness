@@ -14,11 +14,6 @@
 
 ?>
 
-
-<?php //get_template_part( 'template-parts/footer/footer-widgets' ); 
-?>
-
-
 <!--footer-->
 <div class="footer mt-0">
 	<div class="container">
@@ -41,23 +36,11 @@
 						<div class="footer-text mt-1 mt-lg-1">
 							<?php $short_description = get_field('short_description', 'option'); ?>
 							<p><?php echo $short_description; ?></p>
-
-							<!-- <form action="#" class="footer-subscribe">
-								<div class="input-group">
-									<input name="subscribe_mail" type="text" class="form-control" placeholder="Your Email"/>
-									<span><i class="icon-black-envelope"></i></span>
-								</div>
-							</form> -->
 							<?php $news_letter = get_field('news_letter', 'option'); ?>
 							<?php echo do_shortcode($news_letter); ?>
 
 						</div>
-						<!-- <div class="footer-social d-md-none d-lg-block">
-							<a href="https://www.facebook.com/" target="blank" class="hovicon"><i class="icon-facebook-logo"></i></a>
-							<a href="https://www.twitter.com/" target="blank" class="hovicon"><i class="icon-twitter-logo"></i></a>
-							<a href="https://plus.google.com/" target="blank" class="hovicon"><i class="icon-google-logo"></i></a>
-							<a href="https://www.instagram.com/" target="blank" class="hovicon"><i class="icon-instagram"></i></a>
-						</div> -->
+						
 					</div>
 				</div>
 			</div>
@@ -77,12 +60,6 @@
 				);
 				?>
 			</div>
-			<!-- <div class="col-sm-6 col-lg-4">
-				<h3>Our Contacts</h3>
-				<div class="h-decor"></div>
-				<?php //$inquiry_form = get_field('inquiry_form', 'option'); ?>
-				<?php //echo do_shortcode($inquiry_form); ?>
-			</div> -->
 			<div class="col-sm-6 col-lg-4">
 				<h3>Our Contacts</h3>
 				<div class="h-decor"></div>
@@ -102,7 +79,6 @@
 				<div class="col-sm">
 					<?php echo get_field('copyright_text', 'option');?>
 				</div>
-				<!-- <div class="col-sm-auto ml-auto"><span class="d-none d-sm-inline">For emergency cases&nbsp;&nbsp;&nbsp;</span><i class="icon-telephone"></i>&nbsp;&nbsp;<b>1-800-267-0000</b></div> -->
 			</div>
 		</div>
 	</div>
@@ -259,14 +235,8 @@
             </button>
             <div class="modal-body">
                 <div class="modal-form text-center">
-                    <!-- <form> -->
-                        <!-- <input type="hidden" id="postID" name="postID" value="" />
-                        <input type="hidden" id="action" name="action" value="contactUs"> -->
-                        <!-- </form> -->
                     <h3>Get Best Quote </h3>
-					
                     <div class="row" >
-                    <!-- <div class="col-lg-6 mt-4 mt-lg-0" id="html"> -->
 				    </div>
                         <div class="col-lg-12">
                             <div>
@@ -282,8 +252,7 @@
 </div>
 
 
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-<!-- or -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
 <script src="<?php echo get_template_directory_uri();?>/vendor/jquery/jquery-3.2.1.min.js"></script>
 <script src="<?php echo get_template_directory_uri();?>/vendor/jquery-migrate/jquery-migrate-3.0.1.min.js"></script>
@@ -306,7 +275,6 @@
 <script src="<?php echo get_template_directory_uri();?>/js/app.js"></script>
 <script src="<?php echo get_template_directory_uri();?>/color/color.js"></script>
 <script src="<?php echo get_template_directory_uri();?>/js/app-shop.js"></script>
-<!-- <script src="<?php echo get_template_directory_uri();?>/form/forms.js"></script> -->
 
 
 
@@ -440,85 +408,26 @@ function ajaxSubmit(postID) {
     }
 </script>
 
-<script type="text/javascript">
-$(document).ready(function(){
-  loadTable();
-});
-
-
-
-
-function loadTable(){ 
-    $("#load-table").html("");
-    $.ajax({ 
-      url : 'http://192.168.0.128/php-rest-api/glasierwellness-api-fetch.php',
-      type : "GET",
-      success : function(data){
-        if(data.status == false){
-          $("#load-table").append("<tr><td colspan='6'><h2>"+ data.message +"</h2></td></tr>");
-        }else{
-          $.each(data, function(key, value){ 
-            $("#load-table").append(
-            	"<tr>" + 
-                "<td>" + value.id + "</td>" + 
-                "<td>" + value.product_name +"</td>" + 
-                "<td>" + value.requirement +"</td>" + 
-                "<td>" + value.units +"</td>" +
-                "<td>" + value.remark +"</td>" + 
-                "<td>" + value.party_name +"</td>" + 
-                "<td>" + value.company_name +"</td>" +
-                "<td>" + value.phone +"</td>" + 
-                "<td>" + value.email +"</td>" + 
-                "<td>" + value.location +"</td>" +
-                "<td>" + value.country +"</td>" + 
-                "<td>" + value.state +"</td>" + 
-                "<td>" + value.city +"</td>" +
-                "<td>" + value.datetime +"</td>" +
-                "<td><button class='delete-btn' data-id='"+ value.id + "'><i class='fa fa-close'></i></button></td>" +
-                "</tr>"
-                );
-          });
-        }
-      }
-    });
-  }
-
-
-
-
-  //Delete Record
-  $(document).on("click",".delete-btn",function(){
-    if(confirm("Do you really want to delete this record ? ")){
-      var studentId = $(this).data("id");
-      var obj = {id : studentId};
-      var myJSON = JSON.stringify(obj);
-      var row = this;
-
-      $.ajax({
-      url : 'http://192.168.0.128/php-rest-api/glasierwellness-api-delete.php',
-      type : "POST",
-      data : myJSON,
-      success : function(data){
-        // message(data.message, data.status);
-        if(data.status == true){
-          $(row).closest("tr").fadeOut();
-        }
-      }
-    });
-    }
-  });
-
-</script>
-
 <script>
 
 document.addEventListener( 'wpcf7mailsent', function( event ) {
-   
+
    if (event.detail.contactFormId == "252") {
 	   loadTable();
    }
 }, false );
 </script>
+
+
+<script>
+    $(document).ready(function() {
+        $('#select').change(function() {
+            location.href = $(this).val();
+        });
+    });
+</script>
+
+
 <?php wp_footer(); ?>
 
 </body>

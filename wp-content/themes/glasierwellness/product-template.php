@@ -6,15 +6,7 @@
  * 
  **/
 
-get_header();
-
-
-
-
-
-?>
-
-
+get_header(); ?>
 
 <div class="page-content">
     <!--section-->
@@ -47,7 +39,7 @@ get_header();
                     <div class="filters-row align-items-center d-md-none d-flex">
                         <div class="d-flex align-items-center justify-content-between filters-row-left col-md-12 p-0">
                             <?php
-                            // $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
                             $paged = 1;
                             $products = new WP_Query(array(
                                 'post_type' => 'products', 
@@ -58,8 +50,6 @@ get_header();
                             $a = 1;
                             $b = 1;
                             ?>
-                            <!-- <span>Showing 1-9 of 18 results</span> -->
-                            <?php noPage_pagination($products->max_num_pages); ?>
                             <div class="form-inline w-100">
                                 <div class="select-wrapper">
                                     <select id="select" name="sorting">
@@ -78,50 +68,29 @@ get_header();
                                             echo $term_list;
                                         }
                                         ?>
-
-
                                     </select>
-                                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-                                    <script>
-                                        $(document).ready(function() {
-                                            $('#select').change(function() {
-                                                location.href = $(this).val();
-                                            });
-                                        });
-                                    </script>
+                                    
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
-
                     <div class="prd-grid" id="prd-grid">
                         <?php
                         while ($products->have_posts()) : $products->the_post(); ?>
-
+                            <!-- PRODUCT LIST -->
                             <?php get_template_part('products/product-list'); ?>
-
-
+                            <!-- // PRODUCT LIST -->
                         <?php endwhile;
-                        wp_reset_postdata();
-                        ?>
-
+                        wp_reset_postdata(); ?>
                     </div>
-                    
+                
                     <div class="clearfix mb-3"></div>
                     <div class="row justify-content-center mt-5 mb-5 loadMore hidden" id="loadMore">
-                        <img src="<?php echo site_url()?>/wp-content/uploads/2021/12/loadmore.gif" alt="loading"/>
-                    </div>
-                    <?php //cpt_pagination($products->max_num_pages); ?>
+                        <img src="<?php echo site_url()?>/wp-content/uploads/2021/12/loadmore.gif" alt="loading" />
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-
-
 
 <?php get_footer(); ?>

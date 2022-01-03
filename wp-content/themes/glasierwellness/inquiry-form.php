@@ -5,14 +5,7 @@
  * Template Name: Inquiry Form
  * 
  **/
-get_header();
-
-$product_name = $_POST['product_name'];
-$quantity = $_POST['quantity'];
-// print_r(getValue($data));
-?>
-
-
+get_header(); ?>
 <div class="page-content">
 	<!--section contact-->
 	<div class="section bg-norepeat bg-bottom bg-left bg-md-none bg-fixed section-bottom-padding-half " style="background-image: url(<?php echo get_template_directory_uri();?>/images/bg-bottom-left2.png)">
@@ -23,8 +16,7 @@ $quantity = $_POST['quantity'];
 					<p>We believe in providing the best possible care to all our existing patients and welcome
 					new patients to sample.</p>
 				</div>
-				
-				
+
 				<div class="row mt-5">
 					<div class="col-sm-12 col-lg-12">
 						<p class="text-danger mb-0">(*) required</p>
@@ -36,9 +28,6 @@ $quantity = $_POST['quantity'];
 		</div>
 	</div>
 	<!--//section contact-->
-
-	
-
 </div>
 
 

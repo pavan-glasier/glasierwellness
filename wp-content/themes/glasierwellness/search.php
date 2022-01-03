@@ -11,9 +11,7 @@
 
 get_header();
 
-if ( have_posts() ) {
-	?>
-
+if ( have_posts() ) { ?>
 
 <div class="page-content">
     <!--section-->
@@ -34,7 +32,6 @@ if ( have_posts() ) {
 											(int) $wp_query->found_posts,
 											'glasierwellness'
 										)
-
 									),
 									(int) $wp_query->found_posts
 								);
@@ -64,8 +61,6 @@ if ( have_posts() ) {
 						// Start the Loop.
 						while ( have_posts() ) {
 							the_post();
-
-							// get_template_part( 'template-parts/content/content-excerpt', get_post_format() );
 							?>
 							<div class="col-md-3 col-lg-3">
 								<div class="search-post">
@@ -78,8 +73,6 @@ if ( have_posts() ) {
 							</div>
 							<?php } ?>
 						
-                    
-
                     <div class="clearfix"></div>
 					
             </div>

@@ -90,7 +90,6 @@
                                 </div>
                                 <span id="msg" class="err"></span>
                             </div>
-                            <!-- <button id="btnDis" class="btn mt-2" onclick="openProductDetail(<?php echo $post->ID;?>)"><i class="icon-right-arrow"></i>Get Best Quote<i class="icon-right-arrow"></i></button>  -->
                             <button type="submit" id="btnDis" class="btn mt-2"><i class="icon-right-arrow"></i>Get Inquiry<i class="icon-right-arrow"></i></button>
                         </form>
                     </div>
@@ -155,14 +154,9 @@
                 
                 foreach ($productCat as $productsInfo) {
                     $cat_id = $productsInfo->term_id; 
-                    // echo $cat_id;
+
                     ?>
-                <?php } 
-                    // echo $productCat[0]->term_id;
-                    // echo $productCat[1]->term_id;
-                    // echo $productCat[2]->term_id;
-                
-                ?>
+                <?php } ?>
             
             </div>
             <div class="prd-grid prd-carousel">

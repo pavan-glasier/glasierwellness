@@ -1,7 +1,6 @@
 <?php
 global $wp;
 $wp->parse_request();
-//echo home_url( $wp->request );
 ?>
 
 <form action="<?php echo site_url(); ?>/product-search/" class="content-search content-search--style2 d-flex mb-3" method="post">

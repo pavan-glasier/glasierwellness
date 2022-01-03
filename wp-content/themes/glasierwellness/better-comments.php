@@ -26,7 +26,6 @@ function better_comments( $comment, $args, $depth ) {
 		default :
 
 		if ( 'div' != $args['style'] ) { ?>
-		<!-- <div id="div-comment-<?php comment_ID() ?>" class="commen-item"> -->
 			<?php } ?>
 			<div class="userpic d-none d-sm-block">
 				<div class="author">
@@ -37,15 +36,11 @@ function better_comments( $comment, $args, $depth ) {
 						echo get_avatar( $comment, $avatar_size );
 				} ?>
 				</div>
-				
 			</div>
 			<!-- .comment-author -->
 			<div class="text">
 				
 				<div class="meta">
-					<!-- <a href="#" class="meta-author">
-						<b>admin</b>
-					</a> -->
 					<?php printf( __( '<b class="meta-author">%s</b>', 'glasierwellness' ), get_comment_author_link() ); ?>
 					<span class="meta-date">
 						<i class="icon icon-clock3"></i>
@@ -68,17 +63,9 @@ function better_comments( $comment, $args, $depth ) {
 					'depth'     => $depth,
 					'max_depth' => $args['max_depth']
 				) ) ); ?>
-				
-				
-				<!-- <a href="<?php //echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>">
-				
-					</a> -->
-					<?php
-					//edit_comment_link( __( '(Edit)', 'glasierwellness' ), '  ', '' ); ?>
 			</div>
 	<?php
 		if ( 'div' != $args['style'] ) { ?>
-		<!-- </div> -->
 		<?php }
 	// IMPORTANT: Note that we do NOT close the opening tag, WordPress does this for us
 		break;

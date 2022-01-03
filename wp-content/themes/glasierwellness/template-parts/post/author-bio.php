@@ -6,7 +6,6 @@
  * @subpackage glasier_wellness
  * @since Glasier Wellness 1.0
  */
-
 ?>
 <?php if ( (bool) get_the_author_meta( 'description' ) && post_type_supports( get_post_type(), 'author' ) ) : ?>
 	<div class="author-bio <?php echo get_option( 'show_avatars' ) ? 'show-avatars' : ''; ?>">
